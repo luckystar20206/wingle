@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600&family=Raleway:wght@400;500&display=swap');
+
+header{
+    margin: 40px auto 20px auto;
+    width: 87%;
+}
+
+header .heading{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #272727;
+}
+
+header .filter-cont{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .filter-cont .filter{
+    background: transparent;
+    border: 2px solid #000;
+    outline: none;
+    padding: 6px 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.card-container{
+    width: 90%;
+    margin: auto auto 50px auto;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Poppins:wght@400;500&family=Inter:wght@400;500;600&family=Montserrat:wght@500;600&family=Raleway:wght@400;500&display=swap');
+
+.heading{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    width: 87%;
+    margin: 40px auto 20px auto;
+    color: #272727;
+}
+
+.cart-table .item-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 87%;
+    height: 250px;
+    margin: auto;
+    border-bottom: 1px solid lightgray;
+}
+
+.cart-table .item-card .col{
+    display: flex;
+    gap: 20px;
+}
+
+.cart-table .item-card .item-image{
+    height: 195px;
+    width: 290px;
+    object-fit: cover;
+}
+
+.cart-table .item-card .col .item-details{
+    font-family: 'Inter', sans-serif;
+}
+
+.cart-table .item-card .col .item-details .item-name{
+    font-weight: 500;
+    font-size: 25px;
+    margin: 0;
+}
+
+.cart-table .item-card .col .item-details .size{
+    font-weight: 400;
+    font-size: 20px;
+    margin: 15px 0 8px 0;
+}
+
+.cart-table .item-card .col .item-details .quantity-wrapper{
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 5px;
+    font-size: 15px;
+    width: max-content;
+    padding: 3px 4px;
+    margin-bottom: 10px;
+}
+
+.cart-table .item-card .col .item-details .quantity-wrapper label{
+    margin: 0;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.cart-table .item-card .col .item-details .quantity-wrapper .quantity-selection{
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+}
+
+.cart-table .item-card .col .item-details .quantity-wrapper .quantity-selection:hover{
+    background-color: lightgray;
+}
+
+.cart-table .item-card .col .item-details .renting-period-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-table .item-card .col .item-details .renting-period-wrapper .title{
+    font-family: 'Inter', sans-serif;
+    margin: 5px 0;
+}
+
+.cart-table .item-card .col .item-details .renting-period-wrapper .renting-days-selection{
+    width: max-content;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 4px;
+    margin: 0 0 5px 0;
+}
+
+.cart-table .item-card .col .item-details .price-w-day{
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+.cart-table .item-card .col .item-details .price-w-day .red-clr{
+    color: red;
+}
+
+.cart-table .item-card .col .item-details .price-w-day  .txt-bg{
+    font-size: 16px;
+}
+
+.cart-table .item-card .final-price .price{
+    font-family: 'Dm Sans', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.cart-table .item-card .final-price .price .txt-bg{
+    font-size: 30px;
+}

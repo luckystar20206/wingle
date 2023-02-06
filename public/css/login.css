@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;800&family=Poppins:wght@400;500;600&family=Inter:wght@400;500;600&family=Montserrat:wght@500;600&family=Raleway:wght@400;500&display=swap');
+
+body {
+    margin: 0;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.row .col {
+    width: 50%;
+    padding: 10px;
+    margin: 10px 30px;
+    height: 650px;
+}
+
+.row .col .logo h1 {
+    margin: 0;
+    display: inline-block;
+}
+
+.row .col .logo h1 .logo-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    color: #181818;
+    font-size: 26px;
+}
+
+.row .col .form-wrapper {
+    font-family: 'DM sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 0 0 0;
+    padding: 50px 0 0 0;
+}
+
+
+.row .col .form-wrapper .header .form-title {
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.row .col .form-wrapper .header .sub-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: #797D80;
+    margin-top: 0;
+}
+
+.row .col .form-wrapper .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /*border: 1px solid #000;*/
+    width: 330px;
+}
+
+
+.row .col .form-wrapper .login-form .input {
+    border: none;
+    border-bottom: 1px solid #000;
+    background-color: transparent;
+    font-family: 'Dm Sans', sans-serif;
+    font-weight: 500;
+    color: #3f3f3f;
+    padding: 10px 2px;
+    font-size: 15px;
+}
+
+.row .col .form-wrapper .login-form .input:focus {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid blue;
+}
+
+.row .col .form-wrapper .login-form .forgot-password {
+    text-align: right;
+    font-size: 13px;
+    color: black;
+    text-decoration: underline;
+    transition: color ease 0.2s;
+}
+
+.row .col .form-wrapper .login-form .forgot-password:hover {
+    color: blue;
+}
+
+.row .col .form-wrapper .login-form .submit-btn {
+    background-color: #181818;
+    color: #fff;
+    font-family: 'DM sans', sans-serif;
+    font-weight: 500;
+    border-radius: 4px;
+    border: 1px solid #000;
+    padding: 7px 0;
+    cursor: pointer;
+}
+
+.row .col .form-wrapper .login-form .submit-btn:hover {
+    background-color: #000;
+}
+
+.row .col .form-wrapper .login-form .after-form-text {
+    color: #797D80;
+    font-weight: 400;
+    font-size: 15px;
+    user-select: none;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.row .col .form-wrapper .login-form .after-form-text .login-link {
+    color: #000;
+    text-decoration: none;
+}
+
+.row .col .form-wrapper .login-form .after-form-text .login-link:hover {
+    text-decoration: underline;
+}
+
+.row .col .image-wrapper {
+    height: calc(100vh - 39px);
+    position: relative;
+}
+
+.row .col .image-wrapper .image {
+    width: max-content;
+    height: inherit;
+    float: right;
+}
+
+.row .col .image-wrapper .button-link {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+}
+
+.row .col .image-wrapper .button-link .login-button {
+    background-color: #181818;
+    color: #fff;
+    font-family: 'DM sans', sans-serif;
+    font-weight: 500;
+    border-radius: 11px;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: all ease 0.2s;
+}
+
+.row .col .image-wrapper .button-link .login-button:hover {
+    background-color: #121212;
+}
+
+
+
+

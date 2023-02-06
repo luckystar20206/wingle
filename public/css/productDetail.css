@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&&family=Poppins:wght@500&family=Inter:wght@400;500;600&family=Montserrat:wght@500;600&family=Raleway:wght@400;500&display=swap');
+
+.row {
+    width: 85%;
+    display: flex;
+    /*align-items: center;*/
+    margin: 50px auto auto;
+    gap: 30px;
+}
+
+.row .col{
+    width: 50%;
+}
+
+.row .col .product-image{
+    width: 100%;
+}
+
+.row .col .product-name{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    margin: 5px 0;
+}
+
+.row .col .special-price{
+    color: #1CB434;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    font-size: 20px;
+}
+
+.row .col .pricing-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Dm Sans', sans-serif;
+    font-weight: 500;
+    margin: 15px 0 10px 0;
+}
+
+.row .col .pricing-wrapper .strike-price{
+    text-decoration: line-through;
+    color: #A1A1A1;
+    margin: 0;
+}
+
+.row .col .pricing-wrapper .price{
+    margin: 0;
+}
+
+.row .col .pricing-wrapper .price .bg-txt{
+    font-size: 28px;
+}
+
+.row .col .rating-wrapper{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    background-color: rgba(28, 180, 52, 0.88);
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 20px;
+    margin: 6px 0 10px 0;
+    width: max-content;
+}
+.row .col .rating-wrapper p{
+    font-size: 12px;
+    margin: 0;
+}
+
+.row .col .size-wrapper .size-label{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.row .col .size-wrapper .boxes{
+    display: flex;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.row .col .size-wrapper .boxes .size-box{
+    border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    font-family: 'Raleway', sans-serif;
+    cursor: pointer;
+    font-weight: 500;
+    border-radius: 2px;
+    transition: background-color ease 0.2s;
+}
+
+.row .col .size-wrapper .boxes .size-box:hover{
+    background-color: #000;
+    color: #fff;
+}
+
+.row .col  .add-to-cart{
+    background-color: #181818;
+    border: 1px solid #000;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 6px 25px;
+    cursor: pointer;
+    transition: background-color ease 0.21s;
+}
+
+.row .col  .add-to-cart:active{
+    background-color: #000;
+}
+
+.row .col  .add-to-cart:focus{
+    border: 2px dotted blue;
+    background-color: transparent;
+    color: #000;
+    outline: none;
+}

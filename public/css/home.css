@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600&family=Raleway:wght@400;500&display=swap');
+
+.modal{
+    position: fixed;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0,0.5);
+    z-index: 100;
+}
+
+.block{
+    display: block;
+}
+.none{
+    display: none;
+}
+
+.modal-content{
+    width: 379px;
+    height: 164px;
+    margin: 80px auto;
+    background-color: #fff;
+    border-radius: 21px;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+.modal-content .modal-header .modal-title{
+    font-weight: 500;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.modal-content .modal-header .modal-title::before{
+    content: url("/icons/home_pin.png");
+    display: inline-flex;
+    transform: scale(0.8);
+}
+
+.modal-content .modal-header .modal-tagline{
+    color: #5E5E5E;
+    font-size: 12px;
+    margin: 0;
+    padding: 0 48px;
+}
+
+.modal-content .modal-selector{
+    margin: 35px 0 20px 0;
+}
+
+.modal-content .modal-selector .modal-selector-tagline{
+    color: #000;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.modal-content .modal-selector .selection{
+    width: 100%;
+    background: white;
+    border: 2px solid #000;
+    outline: none;
+    border-radius: 5px;
+    padding: 6px 8px;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: box-shadow ease-in-out 0.15s;
+}
+
+.modal-content .modal-selector .selection:focus{
+    border: 2px solid #7342CC;
+    box-shadow: 0 0 0 0.15rem #7342CC75;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 40px auto 20px auto;
+    width: 87%;
+}
+
+.header .heading{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #272727;
+    /*margin: 40px 0 20px 0;*/
+}
+
+.header .filters-area{
+    background: transparent;
+    border: 2px solid #000;
+    outline: none;
+    padding: 6px 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.see-all-button{
+    display: flex;
+    justify-content: flex-end;
+    width: 87%;
+    margin: auto auto 10px auto;
+}
+
+.see-all-button .see-all{
+    text-decoration: none;
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    transition: background-color ease-in-out .2s;
+    border: 1px solid #000;
+    padding: 7px 13px;
+}
+
+.see-all-button .see-all:hover{
+    background-color: #000;
+    color: #fff;
+}
+
+.card-container{
+    width: 90%;
+    margin: auto auto 50px auto;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}

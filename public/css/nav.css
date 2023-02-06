@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Raleway:wght@400;500&display=swap');
+body{
+    margin: 0;
+    padding: 0;
+}
+nav{
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+nav .nav__left{
+    display: flex;
+    align-items: center;
+}
+
+nav .nav__left .nav__brand{
+    font-family: 'Montserrat', sans-serif;
+}
+
+nav .nav__left .nav__brand h1 a{
+    color: #0D0D0D;
+    text-decoration: none;
+}
+
+
+nav .nav__left .nav__items{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    font-family: 'Raleway', sans-serif;
+}
+nav .nav__left .nav__items li a, .nav__right .nav__items li a{
+    text-decoration: none;
+    color: #515151;
+    font-weight: 500;
+}
+
+nav .nav__left .nav__items li a:hover, .nav__right .nav__items li a:hover{
+    border-bottom: 2px solid #515151;
+    color: black;
+    /*text-decoration: underline;*/
+}
+
+nav .nav__right .nav__items{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 20px;
+    font-family: 'Raleway', sans-serif;
+}
+
+nav .nav__right .nav__items .button__link .cart__button{
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    outline: none;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    padding: 10px 25px;
+    border-radius: 4px;
+    font-size: 15px;
+    cursor: pointer;
+}
