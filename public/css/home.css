@@ -1,26 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600&family=Raleway:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600&family=Poppins:wght@400;500;600&family=Inter:wght@400;500;600&family=Montserrat:wght@500;600&family=Raleway:wght@400;500&display=swap');
 
-.modal{
+.alert-success {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: white;
+    background: darkblue;
+    padding: 8px 13px;
+    border-radius: 3px;
+    border: 2px solid #000000;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    animation-name: animate-down;
+    animation-duration: 5s;
+}
+
+@keyframes animate-down {
+    0% {
+        transform: translate(-110px, -56px);
+
+    }
+    20% {
+        transform: translate(-110px, 0px);
+
+    }
+    80% {
+        transform: translate(-110px, 0px);
+
+    }
+    100% {
+        transform: translate(-110px, -56px);
+    }
+}
+
+.modal {
     position: fixed;
     left: 50%;
     top: 0;
     transform: translateX(-50%);
     width: 100%;
     height: 100%;
-    background-color: rgb(0,0,0,0.5);
+    background-color: rgb(0, 0, 0, 0.5);
     z-index: 100;
 }
 
-.block{
+.block {
     display: block;
 }
-.none{
+
+.none {
     display: none;
 }
 
-.modal-content{
+.modal-content {
     width: 379px;
-    height: 164px;
+    height: auto;
     margin: 80px auto;
     background-color: #fff;
     border-radius: 21px;
@@ -28,7 +62,7 @@
     font-family: 'Inter', sans-serif;
 }
 
-.modal-content .modal-header .modal-title{
+.modal-content .modal-header .modal-title {
     font-weight: 500;
     font-size: 25px;
     display: flex;
@@ -36,30 +70,103 @@
     margin: 0;
 }
 
-.modal-content .modal-header .modal-title::before{
+.modal-content .modal-header .modal-title::before {
     content: url("/icons/home_pin.png");
     display: inline-flex;
     transform: scale(0.8);
 }
 
-.modal-content .modal-header .modal-tagline{
+.modal-content .modal-header .modal-tagline {
     color: #5E5E5E;
     font-size: 12px;
     margin: 0;
     padding: 0 48px;
 }
 
-.modal-content .modal-selector{
+.modal-content .modal-selector {
     margin: 35px 0 20px 0;
+    /*padding: 0 0 0 18px;*/
 }
 
-.modal-content .modal-selector .modal-selector-tagline{
+.modal-content .modal-selector form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content .modal-selector .label-pincode {
+    margin: 10px 0;
+}
+
+.modal-content .modal-selector .input-pin-code {
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.modal-content .modal-selector input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.modal-content .modal-selector form .proceed-btn {
+    font-family: 'Poppins', sans-serif;
+    background: #1a73e8;
+    color: #fff;
+    font-size: 15px;
+    border: 1px solid #1a73e8;
+    padding: 7px 0;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: background-color ease 0.2s;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.modal-content .modal-selector form .proceed-btn:hover {
+    background-color: #1765cc;
+    box-shadow: 0px 1px 2px 0 rgb(60 64 67 / 20%);
+}
+
+.modal-content .modal-selector form .alert-red {
+    padding: 5px 10px;
+    color: #be2d2d;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    margin: 5px 0;
+    background-color: #f8d7da;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-content .modal-selector .modal-selector-tagline {
     color: #000;
     font-size: 18px;
     margin: 10px 0;
 }
 
-.modal-content .modal-selector .selection{
+.modal-content .modal-selector .locate-btn {
+    padding: 6px 12px;
+    margin-left: 14px;
+    color: white;
+    background-color: blue;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color ease 0.2s;
+}
+
+.modal-content .modal-selector .locate-btn:hover {
+    background-color: #0000b5;
+}
+
+.modal-content .modal-selector .selection {
     width: 100%;
     background: white;
     border: 2px solid #000;
@@ -71,12 +178,12 @@
     transition: box-shadow ease-in-out 0.15s;
 }
 
-.modal-content .modal-selector .selection:focus{
+.modal-content .modal-selector .selection:focus {
     border: 2px solid #7342CC;
     box-shadow: 0 0 0 0.15rem #7342CC75;
 }
 
-.header{
+.header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -84,14 +191,14 @@
     width: 87%;
 }
 
-.header .heading{
+.header .heading {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     color: #272727;
     /*margin: 40px 0 20px 0;*/
 }
 
-.header .filters-area{
+.header .filters-area {
     background: transparent;
     border: 2px solid #000;
     outline: none;
@@ -102,14 +209,64 @@
     cursor: pointer;
 }
 
-.see-all-button{
-    display: flex;
-    justify-content: flex-end;
-    width: 87%;
-    margin: auto auto 10px auto;
+.header .display-area form {
+    font-family: 'Poppins', sans-serif;
 }
 
-.see-all-button .see-all{
+.header .display-area form .dropdown-area{
+    position: relative;
+}
+
+.header .display-area form .dropdown-area .dropdown-input .show_area {
+    background: transparent;
+    border: none;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
+
+.header .display-area form .dropdown-area .dropdown-input {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 8px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.header .display-area form .dropdown-area .dropdown-content{
+    position: absolute;
+    width: 100%;
+    transition: all ease 0.2s;
+}
+
+.header .display-area form .dropdown-area .dropdown-content.d-none{
+    display: none;
+}
+
+.header .display-area form .dropdown-area .dropdown-content .change-area-btn{
+    width: 100%;
+    background-color: #fbfbfb;
+    padding: 8px 0;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    box-shadow: 1px 2px 13px rgb(0 0 0 / 3%);
+    transition: box-shadow ease-in-out 0.1s;
+}
+
+.header .display-area form .dropdown-area .dropdown-content .change-area-btn:hover{
+    box-shadow: 1px 2px 13px rgb(0 0 0 / 6%);
+}
+
+.see-all-button {
+    padding: 10px;
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.see-all-button .see-all {
     text-decoration: none;
     color: #000;
     font-family: 'Inter', sans-serif;
@@ -118,16 +275,20 @@
     padding: 7px 13px;
 }
 
-.see-all-button .see-all:hover{
+.see-all-button .see-all:hover {
     background-color: #000;
     color: #fff;
 }
 
-.card-container{
+.card-container {
     width: 90%;
     margin: auto auto 50px auto;
+}
+
+.card-container .card-flex {
     display: flex;
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
 }
+

@@ -2,6 +2,8 @@
 
 return [
 
+    'from' => ['address' => 'greendream2701@gmail.com', 'Archan' => 'Wigle'],
+
     /*
     |--------------------------------------------------------------------------
     | Default Mailer

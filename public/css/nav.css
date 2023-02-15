@@ -64,3 +64,20 @@ nav .nav__right .nav__items .button__link .cart__button{
     font-size: 15px;
     cursor: pointer;
 }
+
+nav .nav__right .nav__items .log-out-btn{
+    background: transparent;
+    border: 1px solid black;
+    padding: 8px 10px;
+    font-size: 15px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+nav .nav__right .nav__items .log-out-btn:hover{
+    background-color: #181818;
+    color: white;
+;
+}

@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Nunito+Sans:wght@400;500;600&family=Poppins:wght@400;500;600&family=Inter:wght@400;500;600&family=Montserrat:wght@500;600&family=Raleway:wght@400;500&display=swap');
+
+body {
+    margin: 0;
+}
+
+.account-page {
+    display: flex;
+}
+
+.account-page .sidebar {
+    width: 300px;
+    border-right: 1px solid lightgray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.account-page .sidebar .wrapper-top-mid {
+    height: 70%;
+}
+
+.account-page .sidebar .top {
+    margin: 10px auto 30px auto;
+    padding: 10px 0;
+}
+
+.account-page .sidebar .top .logo {
+    margin: 10px 0 25px 0;
+    text-align: center;
+}
+
+.account-page .sidebar .top .logo a {
+    font-family: 'Montserrat', sans-serif;
+    color: #000;
+    text-decoration: none;
+}
+
+.account-page .sidebar .top .image-wrapper {
+    width: 90px;
+    height: 90px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.account-page .sidebar .top .image-wrapper .profile-image {
+    width: 100%;
+    object-fit: cover;
+}
+
+.account-page .sidebar .mid-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    height: inherit;
+    justify-content: space-evenly;
+    font-family: 'Dm sans', sans-serif;
+}
+
+.account-page .sidebar .mid-links .link-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.account-page .sidebar .mid-links .link-wrapper .link {
+    text-decoration: none;
+    color: #181818;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.account-page .sidebar .mid-links .link-wrapper .link:hover {
+    color: #484848;
+}
+
+.account-page .sidebar .mid-links .link-wrapper:hover .bi {
+    color: blue;
+}
+
+.account-page .sidebar .mid-links .link-wrapper .bi {
+    font-size: 23px;
+}
+
+.account-page .sidebar .bottom {
+    margin: 20px 0;
+    padding: 15px 0;
+}
+
+.account-page .sidebar .bottom .logout-button {
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    background-color: #212121;
+    padding: 10px 15px;
+    font-size: 22px;
+    border-radius: 4px;
+    border: 1px solid #212121;
+    cursor: pointer;
+}
+
+.account-page .sidebar .bottom .logout-button:hover {
+    background-color: #000;
+}
+
+.account-page .sidebar .bottom .verify-button {
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    background-color: #28a745;
+    padding: 10px 15px;
+    font-size: 22px;
+    border-radius: 4px;
+    border: 1px solid #28a745;
+    cursor: pointer;
+    transition: background-color ease 0.2s;
+}
+
+.account-page .sidebar .bottom .verify-button:hover {
+    background-color: #218838;
+}
+
+/*Right side of account page */
+.account-page .right {
+    width: calc(100% - 300px);
+}
+
+.account-page .right header {
+    border-bottom: 1px solid lightgray;
+    margin: 25px 0 0;
+}
+
+.account-page .right header .title {
+    padding: 0 40px;
+    font-family: 'Dm Sans', sans-serif;
+    color: #212121;
+    font-weight: 600;
+}
+
+.account-page .right .user-info-wrapper {
+    width: 400px;
+    padding: 10px 40px;
+    margin: auto auto 30px 90px;
+}
+
+.account-page .right .user-info-wrapper h2 {
+    font-family: 'Dm sans', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    margin-bottom: 7px;
+    color: #212121;
+}
+
+.account-page .right .user-info-wrapper p {
+    font-family: 'Dm sans', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: #898686;
+    margin: 0 0 20px;
+}
+
+.account-page .right .user-details-wrapper {
+    margin: 30px 0 0 0;
+    display: flex;
+    /*flex-direction: column;*/
+    flex-wrap: wrap;
+    width: 44%;
+    height: autos;
+    font-family: 'Dm sans', sans-serif;
+    padding: 0 20px;
+}
+
+.account-page .right .user-admin-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.account-page .right .admin-wrapper .card-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.account-page .right .user-admin-wrapper .admin-wrapper .card-container a{
+    color: #000;
+    text-decoration: none;
+    display: flex;
+    flex-grow: 1;
+
+}
+
+.account-page .right .user-admin-wrapper .admin-wrapper .card-container a .card{
+    width: 300px;
+    height: 150px;
+    border: 2px solid #fff;
+    padding: 8px;
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 7px 6px 10px rgb(0 0 0 / 2%);
+    transition: all ease 0.2s;
+    flex-grow: 1;
+}
+
+.account-page .right .admin-wrapper .card-container a .card.green{
+    background-color: #1CB43420;
+    color: #145c14;
+}
+.account-page .right .admin-wrapper .card-container a .card.blue{
+    background-color: #1667cb20;
+    color: #142d5c;
+}
+.account-page .right .admin-wrapper .card-container a .card.red{
+    background-color: #cb161620;
+    color: #681b1b;
+}
+
+.account-page .right .admin-wrapper .card-container a .card:hover{
+    border: 2px solid #000000;
+    box-shadow: inset 7px 6px 10px rgb(0 0 0 / 4%);
+}
+
+.account-page .right .admin-wrapper .card-container a .card:active{
+    /*border: 2px solid #0c0cb0;*/
+    box-shadow: inset 5px 8px 10px rgb(0 0 0 / 18%);
+    transform: scale(0.96);
+}
+
+.account-page .right .admin-wrapper .card-container a .card .card-details{
+    margin: 10px;
+}
+
+.account-page .right .admin-wrapper .card-container a .card .card-details .title, .desc{
+    margin: 5px 0;
+}
+
+.account-page .right .admin-wrapper {
+    margin: 30px 10px 0 0;
+    height: auto;
+    font-family: 'Dm sans', sans-serif;
+    padding: 20px;
+    width: 44%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: -5px 3px 30px rgb(0 0 0 / 4%);
+}
+
+.account-page .right .user-details-wrapper .field-group {
+    display: flex;
+    flex-direction: column;
+    width: 330px;
+    padding: 10px;
+}
+
+.account-page .right .user-details-wrapper .field-group label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-size: 22px;
+}
+
+.account-page .right .user-details-wrapper .field-group input {
+    background-color: transparent;
+    padding: 10px;
+    font-size: 19px;
+    color: #000;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+
+.account-page .right .user-details-wrapper .field-group .label-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.account-page .right .user-details-wrapper .field-group .label-wrapper a {
+    text-decoration: none;
+    color: #2b2bb5;
+    font-size: 18px;
+}
+
+.account-page .right .user-details-wrapper .field-group .label-wrapper a:hover {
+    text-decoration: underline;
+}

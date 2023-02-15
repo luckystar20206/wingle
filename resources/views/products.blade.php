@@ -7,7 +7,7 @@
     Products | Wigle
 @endsection
 @section("css")
-    <link rel="stylesheet" href="/css/product.css">
+    <link rel="stylesheet" href="{{ asset("/css/product.css") }}">
     <link href="/css/card.css" rel="stylesheet">
 @endsection
 
@@ -15,16 +15,22 @@
     @include('nav')
 
     <header>
-        <h1 class="heading">Order this from Makarpura</h1>
+        <h1 class="heading">Order this from {{ session()->get('area') }}</h1>
         <div class="filter-cont">
             <div class="filters-area">
-                <select class="filters-area-main filter" id="select-area">
-                    <option selected value="selected">Select</option>
-                    <option value="Makarpura">Makarpura</option>
-                    <option value="Manjalpur">Manjalpur</option>
-                    <option value="Karelibaug">Karelibaug</option>
-                    <option value="Ajwa">Ajwa</option>
-                </select>
+                <div class="display-area">
+                    <form action="/change-area" method="GET">
+                        <div class="dropdown-area">
+                            <div class="dropdown-input">
+                                <input value="{{ Session::get('area') }}" class="show_area" disabled/>
+                                <i class="bi bi-chevron-down arrow-up"></i>
+                            </div>
+                            <div class="dropdown-content d-none">
+                                <button class="change-area-btn">Change area</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div class="filter-price">
                 <select class="filters-price-main filter" id="select-area">
@@ -39,15 +45,8 @@
         </div>
     </header>
     <div class="card-container">
-        <x-card title="Black mens shirt" rating="4.4" price="99"/>
-        <x-card title="Black mens shirt" rating="4.4" price="99"/>
-        <x-card title="Black mens shirt" rating="4.4" price="99"/>
-        <x-card title="Black mens shirt" rating="4.4" price="99"/>
-        <x-card title="Black mens shirt" rating="4.4" price="99"/>
-        <x-card title="Black mens shirt" rating="4.4" price="99"/>
-        <x-card title="Black mens shirt" rating="4.4" price="99"/>
-        <x-card title="Black mens shirt" rating="4.4" price="99"/>
-        <x-card title="Black mens shirt" rating="4.4" price="99"/>
-        <x-card title="Black mens shirt" rating="4.4" price="99"/>
+        @foreach($products as  $product)
+            <x-card image="{{ $product->image }}" title="{{ $product->product_name }}" rating="{{ $product->rating }}" price="{{ $product->price }}"/>
+        @endforeach
     </div>
 @endsection

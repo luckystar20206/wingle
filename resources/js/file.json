@@ -1,0 +1,98 @@
+{
+    "meta": {
+        "code": 200
+    },
+    "addresses": [
+        {
+            "latitude": 22.270504,
+            "longitude": 73.197211,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.197211,
+                    22.270504
+                ]
+            },
+            "country": "India",
+            "countryCode": "IN",
+            "countryFlag": "🇮🇳",
+            "county": "Vadodara",
+            "distance": 105032,
+            "city": "Vadodara",
+            "postalCode": "390011",
+            "stateCode": "GJ",
+            "state": "Gujarat",
+            "layer": "place",
+            "formattedAddress": "Vadodara, GJ 390011 IND",
+            "placeLabel": "Manjalpur Hospital"
+        },
+        {
+            "latitude": 22.278641,
+            "longitude": 73.196467,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.196467,
+                    22.278641
+                ]
+            },
+            "country": "India",
+            "countryCode": "IN",
+            "countryFlag": "🇮🇳",
+            "county": "Vadodara",
+            "distance": 104259,
+            "city": "Vadodara",
+            "stateCode": "GJ",
+            "state": "Gujarat",
+            "layer": "place",
+            "formattedAddress": "Vadodara, GJ IND",
+            "placeLabel": "Manjalpur Urban Health Center"
+        },
+        {
+            "latitude": 22.278772,
+            "longitude": 73.199387,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.199387,
+                    22.278772
+                ]
+            },
+            "country": "India",
+            "countryCode": "IN",
+            "countryFlag": "🇮🇳",
+            "county": "Vadodara",
+            "distance": 104428,
+            "city": "Vadodara",
+            "stateCode": "GJ",
+            "state": "Gujarat",
+            "street": "Manjalpur Gate Rd",
+            "layer": "street",
+            "formattedAddress": "Manjalpur Gate Rd, Vadodara, GJ IND",
+            "addressLabel": "Manjalpur Gate Rd"
+        },
+        {
+            "latitude": 22.279532,
+            "longitude": 73.199564,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    73.199564,
+                    22.279532
+                ]
+            },
+            "country": "India",
+            "countryCode": "IN",
+            "countryFlag": "🇮🇳",
+            "county": "Vadodara",
+            "distance": 104371,
+            "city": "Vadodara",
+            "stateCode": "GJ",
+            "state": "Gujarat",
+            "street": "Prastuthi Palace to Manjalpur Gate Rd",
+            "layer": "street",
+            "formattedAddress": "Prastuthi Palace to Manjalpur Gate Rd, Vadodara, GJ IND",
+            "addressLabel": "Prastuthi Palace to Manjalpur Gate Rd"
+        }
+    ]
+}

@@ -15,6 +15,7 @@ header .filter-cont{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 45px;
 }
 
 header .filter-cont .filter{
@@ -35,4 +36,51 @@ header .filter-cont .filter{
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
+}
+
+
+.display-area form {
+    font-family: 'Poppins', sans-serif;
+}
+
+.display-area form .dropdown-area{
+    position: relative;
+}
+
+.display-area form .dropdown-area .dropdown-input .show_area {
+    background: transparent;
+    border: none;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
+
+.display-area form .dropdown-area .dropdown-input {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 8px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.display-area form .dropdown-area .dropdown-content{
+    position: absolute;
+    width: 100%;
+    transition: all ease 0.2s;
+}
+
+.display-area form .dropdown-area .dropdown-content.d-none{
+    display: none;
+}
+
+.display-area form .dropdown-area .dropdown-content .change-area-btn{
+    width: 100%;
+    background-color: #fbfbfb;
+    padding: 8px 0;
+    margin-top: 5px;
+    border-radius: 5px;
+    box-shadow: 1px 2px 13px rgb(0 0 0 / 6%);
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
 }

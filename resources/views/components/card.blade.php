@@ -1,7 +1,7 @@
-@props(['title', 'rating', 'price'])
+@props(['title', 'rating', 'price', 'image'])
 
 <div class="card">
-    <img src="https://source.unsplash.com/1200x800/?shirt" alt="image" class="card-img">
+    <img src="{{ asset("storage/images/". $image) }}" alt="image" class="card-img">
     <div class="card-details">
         <h1 class="card-title">{{ $title }}</h1>
         <p class="rating">

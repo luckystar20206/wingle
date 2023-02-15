@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600&family=Inter:wght@400;500;600&family=Montserrat:wght@500;600&family=Raleway:wght@400;500&display=swap');
+
+.container{
+    width:620px;
+    margin: 20px auto;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.container .cont-heading{
+    background-color: rgba(0, 0, 0, 0.05);
+    font-family: 'Nunito Sans', sans-serif;
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.container form{
+    padding: 1rem;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.container form .form-group{
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+
+.container form .form-group .label{
+    padding: 0 10px;
+    color: #262626;
+    width: 33.3%;
+    text-align: right;
+}
+
+.container form .form-group .form-control{
+    width: 50%;
+    flex: 0 0 auto;
+}
+
+
+.container form .form-group .input{
+    display: block;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #212529;
+    background-color: #f8fafc;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    appearance: none;
+    border-radius: 0.375rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s
+}
+
+.input::-webkit-outer-spin-button,.input::-webkit-inner-spin-button{
+    appearance: none;
+}
+
+.container form .submit-btn{
+    width: 60%;
+    margin: auto;
+}
+
+.container form .submit-btn .btn-primary{
+    background-color: #0d6efd;
+    border: 1px solid #0d6efd;
+    color: #fff;
+    padding: 8px 10px;
+    cursor: pointer;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 15px;
+    border-radius: 4px;
+    transition: background-color ease-in-out 0.2s;
+}
+
+.container form .submit-btn .btn-primary:hover{
+    background-color: #0c61de;
+}
+
+.invalid-feedback{
+    color: #dc3545;
+    font-weight: 500;
+    font-family: 'Nunito Sans', sans-serif;
+    width: 50%;
+    margin: auto;
+    font-size: 14px;
+}

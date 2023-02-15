@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AreaController;
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,29 +18,42 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes(['verify' => true]);
+
 Route::get('/', function () {
     return view('home');
 });
+Route::get('/search-pincode', [AreaController::class, 'searchArea']);
+Route::get('/change-area', [AreaController::class, 'searchArea']);
 
-Route::get('/products', function (){
-    return view('products');
-});
+Route::get('/products', [ProductController::class, 'showProducts'])->middleware(['checkusersession']);
 
-Route::get('/products/{id}', function (){
+Route::get('/products/{id}', function () {
     return view('productDetail');
 });
-
-Route::get('/cart', function (){
+Route::get('/cart', function () {
     return view('cart');
 });
-
-Route::get('/contact', function (){
+Route::get('/contact', function () {
     return view('contact');
 });
+Route::get('/account', function () {
+    return view('account');
+})->middleware('auth');
 
-Route::get('/register', [UserController::class, 'create']);
-Route::post('/create-account', [UserController::class, 'store']);
+Route::get('/add-area', [AreaController::class, 'create']);
+Route::post('/add-area-req', [AreaController::class, 'store']);
 
-Route::get('/login', function (){
-    return view('login');
-});
+Route::get("/add-product", [ProductController::class, "createproduct"])->middleware("auth");
+Route::post("/add-product-post", [ProductController::class, "store"]);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//Route::get('/register', [UserController::class, 'create'])->middleware('guest');
+//Route::post('/create-account', [UserController::class, 'store'])->middleware('guest');
+//Route::get('/login', [SessionController::class, 'create'])->middleware('guest');
+//Route::post('login', [SessionController::class, 'store']);
+//Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');

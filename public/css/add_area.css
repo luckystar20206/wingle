@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600&family=Raleway:wght@400;500&display=swap');
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 100vw;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+}
+
+label{
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+.input{
+    border: none;
+    border-bottom: 1px solid #000;
+    background-color: transparent;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    color: #3f3f3f;
+    padding: 10px 2px;
+    font-size: 15px;
+}
+
+.input:focus{
+    outline: none;
+    border: none;
+    border-bottom: 1px solid blue;
+}
+
+.submit{
+    margin-top: 10px;
+    background-color: #181818;
+    border: 1px solid black;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    padding: 6px 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
