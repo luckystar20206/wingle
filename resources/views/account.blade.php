@@ -8,15 +8,36 @@
     <link rel="stylesheet" href="{{ asset('/css/account.css') }}">
 @endsection
 @section('content')
+    @if(session()->has('request_pending'))
+        <div class="warning-alert">
+            <p>
+                {{ session()->get('request_pending') }}
+            </p>
+            <i class="bi bi-x-lg" onclick="document.querySelector('.warning-alert').remove()"></i>
+        </div>
+    @endif
     <div class="account-page">
         <div class="sidebar">
             <div class="wrapper-top-mid">
                 <div class="top">
                     <h1 class="logo"><a href="/">Wigle</a></h1>
                     <div class="image-wrapper">
-                        <img alt="profile_image"
-                             src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZSUyMHBob3RvfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                             class="profile-image">
+                        @if($user[0]->profile_photo)
+                            <img alt="profile_image"
+                                 src="{{ asset('storage/images/'. $user[0]->profile_photo) }}"
+                                 class="profile-image"
+                            >
+                        @else
+                            <img style="width: 40%" alt="photo" src="{{ asset('/icons/icons8-add-image-90.png') }}"
+                                 onclick="document.getElementById('upload_profile_photo').click()" />
+
+                            <form action="/account/upload/profile_photo" method="post" id="image_upload" enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" name="profile_photo" id="upload_profile_photo"  onchange="document.getElementById('image_upload').submit()" hidden>
+                            </form>
+
+                        @endif
+
                     </div>
                 </div>
                 <ul class="mid-links">
@@ -39,6 +60,10 @@
                     <li class="link-wrapper">
                         <i class="bi bi-bag-fill"></i>
                         <a href="/cart" class="link">Cart</a>
+                    </li>
+                    <li class="link-wrapper">
+                        <i class="bi bi-bookmark-star-fill"></i>
+                        <a href="/account/list_admin_requests" class="link">Admin Requests</a>
                     </li>
                 </ul>
             </div>
@@ -66,32 +91,67 @@
             </div>
             <div class="user-admin-wrapper">
                 <div class="user-details-wrapper">
-                    <div class="field-group">
-                        <label for="name">Name</label>
-                        <input type="text" value="Archan RD" name="username" id="name" disabled required>
-                    </div>
-                    <div class="field-group">
-                        <label for="email">Email</label>
-                        <input type="email" value="archanrd29@gmail.com" name="email" id="email" disabled required>
-                    </div>
-                    <div class="field-group">
-                        <div class="label-wrapper">
-                            <label for="password">Password</label>
-                            <a href="/password/reset">Forgot password</a>
+                    @if(session()->has('changes_success'))
+                        <div class="success-alert">
+                            <p>
+                                <strong>Success!</strong>
+                                {{ session()->get('changes_success') }}
+                            </p>
+                            <i class="bi bi-x-lg" onclick="document.querySelector('.success-alert').remove()"></i>
                         </div>
-                        <input type="password" value="password" name="password" id="password" disabled required>
-                    </div>
-                    <div class="field-group">
-                        <label for="phone">Phone</label>
-                        <input type="email" value="1233456789" name="phone" id="phone" disabled required>
-                    </div>
-                    <div class="field-group">
-                        <label for="address">Address</label>
-                        <input type="email" value="" placeholder="Enter your delivery address" name="address"
-                               id="address">
-                    </div>
+                    @endif
+                    @if(session()->has('success_request'))
+                        <div class="success-alert">
+                            <p>
+                                <strong>Success!</strong>
+                                {{ session()->get('success_request') }}
+                            </p>
+                            <i class="bi bi-x-lg" onclick="document.querySelector('.success-alert').remove()"></i>
+                        </div>
+                    @endif
+                    @if(session()->has('request_exists'))
+                        <div class="warning-alert btm">
+                            <p>
+                                {{ session()->get('request_exists') }}
+                            </p>
+                            <i class="bi bi-x-lg" onclick="document.querySelector('.btm').remove()"></i>
+                        </div>
+                    @endif
+                    <form action="/account/save-changes" method="post" style="display: flex; flex-wrap: wrap">
+                        @csrf
+                        <div class="field-group">
+                            <label for="name">Name</label>
+                            <input type="text" value="{{ $user[0]->name }}" name="username" id="name" disabled required>
+                        </div>
+                        <div class="field-group">
+                            <label for="email">Email</label>
+                            <input type="email" value="{{ $user[0]->email }}" name="email" id="email" disabled required>
+                        </div>
+                        <div class="field-group">
+                            <div class="label-wrapper">
+                                <label for="password">Password</label>
+                            </div>
+                            <a href="/password/reset" type="button" class="reset-pass-btn" name="password"
+                               id="password">Reset password</a>
+                        </div>
+                        <div class="field-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" value="{{ $user[0]->phone }}" name="phone" id="phone" disabled required>
+                        </div>
+                        <div class="field-group">
+                            <label for="address">Address</label>
+                            <input type="text" value="{{ $user[0]->address}}"
+                                   placeholder="Enter your delivery address"
+                                   name="address"
+                                   id="address">
+                        </div>
+                        <div class="field-group">
+                            <label style="visibility: hidden">Save your changes</label>
+                            <button type="submit" class="save-button">Save changes</button>
+                        </div>
+                    </form>
                 </div>
-                @if($role = DB::select("select role from users where role = 'admin'"))
+                @if(\auth()->user()->role === 'admin')
                     <div class="admin-wrapper">
                         <h1 style="margin: 0 0 20px 0">Admin Tools</h1>
                         <div class="card-container">
@@ -116,7 +176,7 @@
                             <a href="">
                                 <div class="card red">
                                     <div class="card-details">
-                                        <h1 class="title">Remove Product</h1>
+                                        <h1 class="title">Remomove Product</h1>
                                         <p class="desc">Remove the products from the catalog that are out of stock.</p>
                                     </div>
                                 </div>
@@ -127,11 +187,13 @@
                     <div class="admin-wrapper">
                         <h1 style="margin: 0 0 20px 0">Admin Tools</h1>
                         <div class="card-container">
-                            <a href="/request-admin-access">
+                            <a href="/account/request-admin-access">
                                 <div class="card green">
                                     <div class="card-details">
                                         <h1 class="title">Request Admin Access</h1>
-                                        <p class="desc">Features like  add, update, remove products and other special rights which can be only accessed by site admins only, to maintain the site.</p>
+                                        <p class="desc">Features like add, update, remove products and other special
+                                            rights which can be only accessed by site admins only, to maintain the
+                                            site.</p>
                                     </div>
                                 </div>
                             </a>

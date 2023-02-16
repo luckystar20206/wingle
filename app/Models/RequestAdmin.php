@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class RequestAdmin extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['image', 'product_name', 'price', 'pincode', 'featured'];
+    protected $fillable = ['user_id', 'username', 'user_email'];
 
     public $timestamps = false;
 }

@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Validator;
 class ProductController extends Controller
 {
 
+    public function index()
+    {
+        $pincode = Session::get("pincode");
+        $products = DB::select(/** @lang text */ "Select * from products where pincode = '$pincode' and featured = '1'");
+        return view('home', ['products' => $products]);
+    }
+
     public function createproduct()
     {
         return view("add_product");
@@ -24,7 +31,6 @@ class ProductController extends Controller
             'pincode' => ['required', 'max:6'],
             'featured' => ['required'],
         ]);
-//        dd($request->all());
         if ($request->hasFile("product_image")) {
             $image = $request->file("product_image");
             $image_name = $image->getClientOriginalName();
@@ -38,9 +44,9 @@ class ProductController extends Controller
             $product->pincode = $request->pincode;
             $product->featured = $request->featured;
             $product->save();
-            return var_dump("added");
+            return redirect()->to('/add-product')->with('success', 'Product added successfully');
         } else {
-            return var_dump("not added");
+            return dd('failed to add, try again');
         }
     }
 
@@ -50,5 +56,10 @@ class ProductController extends Controller
         $products = DB::select("Select * from products where pincode = '$pincode'");
 //        dd($products);
         return view("/products", ["products" => $products]);
+    }
+
+    public function productDetail($id)
+    {
+
     }
 }

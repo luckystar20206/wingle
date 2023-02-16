@@ -24,7 +24,6 @@ class AreaController extends Controller
         }
         $message = "Sorry! we are not yet in this area";
         return redirect()->to('/')->with(['error_area' => $message]);
-
     }
 
     public function create()

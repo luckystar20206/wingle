@@ -8,6 +8,26 @@
     background-color: #fff;
 }
 
+.success-alert{
+    background-color: #1CB43420;
+    border: 1px solid #3a9b3f;
+    color: #145c14;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 13px;
+    border-radius: 4px;
+    font-size: 17px;
+    height: max-content;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+}
+
+.success-alert p{
+    margin: 0;
+}
+
 .container .cont-heading{
     background-color: rgba(0, 0, 0, 0.05);
     font-family: 'Nunito Sans', sans-serif;

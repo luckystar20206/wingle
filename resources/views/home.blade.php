@@ -40,16 +40,16 @@
                 <a href="/products" class="see-all">See all</a>
             </div>
             <div class="card-flex">
-                @if(Session::has("products"))
-                    @foreach($products = Session::get("products")  as $product)
+                @foreach($products as $product)
+                    <a href="">
                         <x-card
                             title="{{ $product->product_name }}"
                             rating="{{ $product->rating}}"
                             price="{{ $product->price }}"
                             image="{{$product->image}}"
                         />
-                    @endforeach
-                @endif
+                    </a>
+                @endforeach
             </div>
         </div>
         {{--    end card container --}}
@@ -62,8 +62,6 @@
                     <p class="modal-tagline">Share your location and start browsing products.</p>
                 </div>
                 <div class="modal-selector">
-                    {{--                <button class="locate-btn" id="locate-button">Detect location automatically</button>--}}
-                    {{--                <p>Or</p>--}}
                     <form action="/search-pincode" method="GET">
                         @csrf
                         <label for="pin code" class="label-pincode">Enter pin code of your area:</label>
@@ -75,6 +73,7 @@
                             oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                             maxlength="6"
                             name="pincode"
+                            value="{{ old('pincode') }}"
                             autocomplete="on"
                         >
                         @if((Session::has('error_area')))
@@ -93,6 +92,5 @@
             </div>
         </div>
     @endif
-
 @endsection
 

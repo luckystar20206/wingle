@@ -13,7 +13,14 @@
 @section("content")
     @include("nav")
 
-    <div class="container">
+    <div class="container">@if(session()->has('success'))
+            <div class="success-alert">
+                <p>
+                    {{ session()->get('success') }}
+                </p>
+                <i class="bi bi-x-lg" onclick="document.querySelector('.success-alert').remove()"></i>
+            </div>
+        @endif
         <div class="cont-heading">{{ __("Add Product") }}</div>
         <form action="/add-product-post" method="POST" enctype="multipart/form-data">
             @csrf

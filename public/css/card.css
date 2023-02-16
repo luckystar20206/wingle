@@ -2,7 +2,7 @@
 
 .card{
     width: 200px;
-    height: auto;
+    height: 350px;
     overflow: hidden;
     padding: 7px 10px;
     background-color: #fff;
@@ -11,7 +11,7 @@
 
 .card .card-img{
     width: 100%;
-    height: 55%;
+    height: 65%;
     object-fit: cover;
     border-radius: 12px;
 }

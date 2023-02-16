@@ -15,7 +15,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 100vh;
+    /*height: 100vh;*/
 }
 
 .account-page .sidebar .wrapper-top-mid {
@@ -30,6 +30,8 @@ body {
 .account-page .sidebar .top .logo {
     margin: 10px 0 25px 0;
     text-align: center;
+    font-weight: 600;
+    font-size: 34px;
 }
 
 .account-page .sidebar .top .logo a {
@@ -44,11 +46,19 @@ body {
     overflow: hidden;
     border-radius: 50%;
     margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .account-page .sidebar .top .image-wrapper .profile-image {
     width: 100%;
     object-fit: cover;
+}
+
+.account-page .sidebar .top .image-wrapper .upload_profile_photo{
+    width: 100%;
+    height: 100%;
 }
 
 .account-page .sidebar .mid-links {
@@ -147,7 +157,7 @@ body {
 .account-page .right .user-info-wrapper {
     width: 400px;
     padding: 10px 40px;
-    margin: auto auto 30px 90px;
+    /*margin: auto auto 30px 90px;*/
 }
 
 .account-page .right .user-info-wrapper h2 {
@@ -180,7 +190,7 @@ body {
 .account-page .right .user-admin-wrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .account-page .right .admin-wrapper .card-container{
@@ -207,6 +217,7 @@ body {
     box-shadow: 7px 6px 10px rgb(0 0 0 / 2%);
     transition: all ease 0.2s;
     flex-grow: 1;
+    box-sizing: border-box;
 }
 
 .account-page .right .admin-wrapper .card-container a .card.green{
@@ -250,6 +261,7 @@ body {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: -5px 3px 30px rgb(0 0 0 / 4%);
+    flex-grow: 1;
 }
 
 .account-page .right .user-details-wrapper .field-group {
@@ -257,6 +269,7 @@ body {
     flex-direction: column;
     width: 330px;
     padding: 10px;
+    justify-content: center;
 }
 
 .account-page .right .user-details-wrapper .field-group label {
@@ -280,10 +293,84 @@ body {
     align-items: center;
 }
 
-.account-page .right .user-details-wrapper .field-group .label-wrapper a {
+.account-page .right .user-details-wrapper .field-group .reset-pass-btn{
+    background-color: #fbfbfb;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    box-shadow: 1px 2px 13px rgb(0 0 0 / 3%);
+    transition: all ease-in-out 0.1s;
+    border:1px solid #fff;
     text-decoration: none;
-    color: #2b2bb5;
+    color: #000;
+}
+
+.account-page .right .user-details-wrapper .field-group .reset-pass-btn:hover{
+    box-shadow: 1px 2px 13px rgb(0 0 0 / 10%);
+    background-color: #f6f6f6;
+    border:1px solid #000;
+}
+
+.account-page .right .user-details-wrapper .save-button{
+    background-color: #0d17e6;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    box-shadow: 1px 2px 13px rgb(0 0 0 / 3%);
+    transition: all ease-in-out 0.1s;
+    border:1px solid #fff;
+    text-decoration: none;
+    color: #fff;
+}
+
+.flex-end-og{
+    justify-content: flex-end;
+}
+
+.success-alert{
+    background-color: #1CB43420;
+    border: 1px solid #3a9b3f;
+    color: #145c14;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 13px;
+    border-radius: 4px;
+    font-size: 17px;
+    height: max-content;
+}
+
+.warning-alert{
+    background-color: #fff3cd8a;
+    border: 1px solid #9b843a;
+    color: #856404;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 13px;
+    border-radius: 4px;
+    font-size: 17px;
+    box-sizing: border-box;
+    height: max-content;
+}
+
+.success-alert p, .warning-alert p{
+    margin: 0;
+}
+
+.bi{
+    cursor: pointer;
     font-size: 18px;
+}
+
+.account-page .right .user-details-wrapper .save-button:hover{
+    background-color: #0c61de;
 }
 
 .account-page .right .user-details-wrapper .field-group .label-wrapper a:hover {
