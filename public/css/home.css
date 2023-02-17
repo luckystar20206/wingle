@@ -288,7 +288,7 @@ input[type=number]::-webkit-outer-spin-button {
 .card-container .card-flex {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
     flex-wrap: wrap;
 }
 

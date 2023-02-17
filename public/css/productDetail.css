@@ -10,10 +10,13 @@
 
 .row .col{
     width: 50%;
+    height: 580px;
 }
 
 .row .col .product-image{
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .row .col .product-name{
@@ -66,11 +69,20 @@
     font-size: 12px;
     margin: 0;
 }
+.row .col .size-wrapper{
+    margin-bottom: 20px;
+}
 
 .row .col .size-wrapper .size-label{
     font-family: 'Raleway', sans-serif;
     font-weight: 500;
     font-size: 18px;
+}
+
+.row .col .size-wrapper select, .row .col .size-wrapper select option{\
+    font-size: 18px;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .row .col .size-wrapper .boxes{

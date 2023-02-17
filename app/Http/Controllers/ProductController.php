@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use function GuzzleHttp\json_encode;
 
 class ProductController extends Controller
 {
@@ -30,11 +31,12 @@ class ProductController extends Controller
             'image' => ['file'],
             'pincode' => ['required', 'max:6'],
             'featured' => ['required'],
+            'size' => ['required'],
         ]);
+        
         if ($request->hasFile("product_image")) {
             $image = $request->file("product_image");
             $image_name = $image->getClientOriginalName();
-
             $image->storeAs('/public/images', $image_name);
 
             $product = new Product();
@@ -43,6 +45,8 @@ class ProductController extends Controller
             $product->image = $image_name;
             $product->pincode = $request->pincode;
             $product->featured = $request->featured;
+            $product->size = json_encode($request->size);
+            $product->category = $request->category;
             $product->save();
             return redirect()->to('/add-product')->with('success', 'Product added successfully');
         } else {
@@ -58,8 +62,14 @@ class ProductController extends Controller
         return view("/products", ["products" => $products]);
     }
 
-    public function productDetail($id)
+    public function productDetail($name, $id)
     {
+        $fetchedProduct = DB::table('products')->select('*')->where(['id' => $id, 'product_name' => $name])->get();
+        return view('productDetail', ['productinfo' => $fetchedProduct]);
+    }
 
+    public function addToCart(Request $request)
+    {
+        dd($request->all());
     }
 }

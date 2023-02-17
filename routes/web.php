@@ -27,8 +27,9 @@ Route::get('/search-pincode', [AreaController::class, 'searchArea']);
 Route::get('/change-area', [AreaController::class, 'searchArea']);
 
 Route::get('/products', [ProductController::class, 'showProducts'])->middleware(['checkusersession']);
+Route::get('/products/product_name={name}&id={id}', [ProductController::class, 'productDetail']);
+Route::post('/add-to-cart', [ProductController::class, 'addToCart']);
 
-Route::get('/products/{id}', [ProductController::class, 'productDetail']);
 Route::get('/cart', function () {
     return view('cart');
 });

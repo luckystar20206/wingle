@@ -32,6 +32,7 @@
                         type="text"
                         id="product-name"
                         name="product_name"
+                        value="{{ old('product_name') }}"
                         required
                         autocomplete="product-name"
                     />
@@ -50,6 +51,7 @@
                     type="file"
                     id="image"
                     name="product_image"
+                    value="{{ old('product_image') }}"
                     required
                 />
                 @error('image')
@@ -65,6 +67,7 @@
                     type="number"
                     id="price"
                     name="price"
+                    value="{{ old('price') }}"
                     required
                 />
                 @error('price')
@@ -74,12 +77,58 @@
                 @enderror
             </div>
             <div class="form-group">
+                <label for="price" class="label">Enter price</label>
+                <select name="category">
+                    <option value="Mens" name="mens" selected>Mens</option>
+                    <option value="Womens" name="womens">Womens</option>
+                    <option value="kids" name="kids">kids</option>
+                </select>
+                @error('category')
+                <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="price" class="label">Enter size</label>
+                <input
+                    type="checkbox"
+                    id="price"
+                    name="size[]"
+                    value="S"
+                />S
+                <input
+                    type="checkbox"
+                    id="price"
+                    name="size[]"
+                    value="M"
+                />M
+                <input
+                    type="checkbox"
+                    id="price"
+                    name="size[]"
+                    value="L"
+                />L
+                <input
+                    type="checkbox"
+                    id="price"
+                    name="size[]"
+                    value="XL"
+                />XL
+                @error('size')
+                <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+            <div class="form-group">
                 <label for="pincode" class="label">Enter pincode</label>
                 <input
                     class="input"
                     type="number"
                     id="pincode"
                     name="pincode"
+                    value="{{ old('pincode') }}"
                     required
                 />
                 @error('pincode')

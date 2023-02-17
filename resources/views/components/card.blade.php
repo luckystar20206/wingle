@@ -12,8 +12,8 @@
         </p>
         <div class="pricing-cont">
             <h1 class="price"><span class="txt-bg">₹{{ $price }}</span>/per day</h1>
-            <div class="horizontal-line"></div>
-            <a href="/products/1"><h1 class="add-to-cart">Add to cart</h1></a>
+            <!-- <div class="horizontal-line"></div>
+            <button class="add-to-cart">Add to cart</button> -->
         </div>
     </div>
 </div>

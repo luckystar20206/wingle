@@ -46,7 +46,14 @@
     </header>
     <div class="card-container">
         @foreach($products as  $product)
-            <x-card image="{{ $product->image }}" title="{{ $product->product_name }}" rating="{{ $product->rating }}" price="{{ $product->price }}"/>
+            <a style="text-decoration: none; color: #181818"
+               href="/products/product_name={{$product->product_name}}&id={{$product->id}}">
+                <x-card
+                    image="{{ $product->image }}"
+                    title="{{ $product->product_name }}"
+                    rating="{{ $product->rating }}"
+                    price="{{ $product->price }}"/>
+            </a>
         @endforeach
     </div>
 @endsection

@@ -41,7 +41,8 @@
             </div>
             <div class="card-flex">
                 @foreach($products as $product)
-                    <a href="">
+                    <a style="text-decoration: none; color: #181818"
+                       href="/products/product_name={{$product->product_name}}&id={{$product->id}}">
                         <x-card
                             title="{{ $product->product_name }}"
                             rating="{{ $product->rating}}"

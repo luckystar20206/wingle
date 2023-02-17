@@ -176,7 +176,7 @@
                             <a href="">
                                 <div class="card red">
                                     <div class="card-details">
-                                        <h1 class="title">Remomove Product</h1>
+                                        <h1 class="title">Remove Product</h1>
                                         <p class="desc">Remove the products from the catalog that are out of stock.</p>
                                     </div>
                                 </div>
