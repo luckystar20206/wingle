@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $user_id = auth()->user()->id;
         $user = DB::select(/** @lang text */ "select * from users where id = '$user_id'");
         $requests = DB::select(/** @lang text */ "select * from request_admins");
@@ -16,14 +17,25 @@ class AdminController extends Controller
 
     public function decideRequest(Request $request)
     {
-//        dd($request->all());
-        $userid = $request->user_id;
-        $requestid = $request->request_id;
-        $username = $request->username;
-        $email = $request->user_email;
+        if ($request->reject) {
+            $requestid = $request->request_id;
+            DB::table('request_admins')->where('request_id', $requestid)->delete();
+            return redirect('/account/list_admin_requests');
+        } else {
+            $userid = $request->user_id;
+            $requestid = $request->request_id;
+            $username = $request->username;
+            $email = $request->user_email;
 
-        DB::update("update users set role = 'admin' where id = '$userid' and name = '$username' and email = '$email'");
-        DB::table('request_admins')->where('request_id', $requestid)->delete();
-        return redirect('/account/list_admin_requests');
+            DB::update("update users set role = 'admin' where id = '$userid' and name = '$username' and email = '$email'");
+            DB::table('request_admins')->where('request_id', $requestid)->delete();
+            return redirect('/account/list_admin_requests');
+        }
+    }
+
+    public function users()
+    {
+        $users = DB::table('users')->select('*')->get();
+        return view('users', ['users' => $users]);
     }
 }

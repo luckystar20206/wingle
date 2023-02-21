@@ -2,8 +2,6 @@
 
 return [
 
-    'from' => ['address' => 'greendream2701@gmail.com', 'Archan' => 'Wigle'],
-
     /*
     |--------------------------------------------------------------------------
     | Default Mailer
@@ -94,8 +92,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'greendream2701@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'Archan from wigle'),
     ],
 
     /*

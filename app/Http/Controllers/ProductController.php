@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         $pincode = Session::get("pincode");
-        $products = DB::select(/** @lang text */ "Select * from products where pincode = '$pincode' and featured = '1'");
+        $products = DB::select(/** @lang text */ "Select * from product where pincode = '$pincode' and featured = '1'");
         return view('home', ['products' => $products]);
     }
 
@@ -33,7 +34,7 @@ class ProductController extends Controller
             'featured' => ['required'],
             'size' => ['required'],
         ]);
-        
+
         if ($request->hasFile("product_image")) {
             $image = $request->file("product_image");
             $image_name = $image->getClientOriginalName();
@@ -57,19 +58,68 @@ class ProductController extends Controller
     public function showProducts()
     {
         $pincode = Session::get("pincode");
-        $products = DB::select("Select * from products where pincode = '$pincode'");
+        $products = DB::select(/** @lang text */ "Select * from product where pincode = '$pincode'");
 //        dd($products);
         return view("/products", ["products" => $products]);
     }
 
     public function productDetail($name, $id)
     {
-        $fetchedProduct = DB::table('products')->select('*')->where(['id' => $id, 'product_name' => $name])->get();
+        $fetchedProduct = DB::table('product')->select('*')->where(['id' => $id, 'product_name' => $name])->get();
         return view('productDetail', ['productinfo' => $fetchedProduct]);
     }
 
     public function addToCart(Request $request)
     {
-        dd($request->all());
+        $size = $request->size;
+        $qty = $request->quantity;
+        $pid = $request->product_id;
+        $uid = auth()->user()->id;
+
+        $product = DB::table('product')->select('*')->where(['id' => $pid])->get()->first();
+        $cartItem = new Cart();
+        $cartItem->pid = $pid;
+        $cartItem->uid = $uid;
+        $cartItem->pname = $product->product_name;
+        $cartItem->image = $product->image;
+        $cartItem->price = $product->price;
+        $cartItem->size = $size;
+        $cartItem->category = $product->category;
+        $cartItem->qty = $qty;
+        $cartItem->rent_period = 1;
+        $cartItem->save();
+        return redirect()->back()->with(['itemAdded' => "Item added to cart"]);
+    }
+
+    public function viewCart()
+    {
+        $cart_number_of_items = DB::table('cart')->count();
+        if ($cart_number_of_items > 0) {
+            $cart_items = DB::table('cart')->select('*')->where(['uid' => auth()->user()->id])->get();
+            return view('cart', ['cart_items' => $cart_items]);
+        } else {
+            return view('cart_empty');
+        }
+    }
+
+    public function updateRentPeriod(Request $request)
+    {
+//        dd($request->all());
+        $uid = auth()->user()->id;
+        $rentPeriod = DB::update("update cart set rent_period = '$request->rent_period' where pid = '$request->pid' and uid = '$uid'");
+        return redirect()->back();
+    }
+
+    public function itemQuantity(Request $request)
+    {
+//        dd($request->all());
+        $uid = auth()->user()->id;
+        $quantity = DB::update("update cart set qty = '$request->qty' where pid = '$request->pid' and uid = '$uid'");
+        return redirect()->back();
+    }
+
+    public function filter($filter)
+    {
+        dd($filter);
     }
 }

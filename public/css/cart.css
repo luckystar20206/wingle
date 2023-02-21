@@ -116,3 +116,62 @@
 .cart-table .item-card .final-price .price .txt-bg{
     font-size: 30px;
 }
+
+.cart-table .total-container{
+    width: 87%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    /*align-items: flex-end;*/
+    padding: 20px 0;
+    font-family: 'Poppins' ,sans-serif;
+}
+
+.cart-table .total-container table{
+    /*border: 1px solid #000;*/
+    /*width: 20%;*/
+    padding: 10px 0;
+}
+
+.cart-table .total-container table tr .value{
+    text-align: right;
+}
+
+.total-container table tr .field{
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+}
+
+.cart-table .total-container table tr .value, .cart-table .total-container table tr .field {
+    font-size: 25px;
+}
+
+.cart-table .total-container table{
+    border-collapse: collapse;
+}
+
+.cart-table .total-container table tr:nth-child(2){
+    border-bottom: thin solid lightgray;
+    padding-bottom: 10px;
+}
+
+.cart-table .total-container table tr .value .checkout-btn{
+    background-color: #0d17e6;
+    color: #fff;
+    padding: 10px 25px;
+    font-size: 18px;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #0d17e6;
+    transition: background-color ease 0.2s;
+}
+
+.cart-table .total-container table tr .value .checkout-btn:hover{
+    background-color: #0000b5;
+}
+
+.cart-table .total-container table tr .value.pt{
+    padding-top: 10px;
+}

@@ -55,4 +55,11 @@ class AccountController extends Controller
             return redirect()->to('/account')->with(['success_request' => 'Your request has been placed successfully']);
         }
     }
+
+    public function deleteAccount()
+    {
+        $user_id = auth()->user()->id;
+        DB::table('users')->where(['id' => $user_id])->delete();
+        return redirect('/login');
+    }
 }

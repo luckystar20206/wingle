@@ -3,6 +3,9 @@
 @section("css")
     <link rel="stylesheet" href="/css/contact.css">
 @endsection
+@section("title")
+    Contact | Wigle
+@endsection
 
 @section('content')
     @include('nav')

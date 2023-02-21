@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&&family=Poppins:wght@500&family=Inter:wght@400;500;600&family=Montserrat:wght@500;600&family=Raleway:wght@400;500&display=swap');
+
+.brand .logo{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    color: #181818;
+    font-size: 30px;
+}
+
+.brand {
+    /*border: 1px solid black;*/
+    padding: 15px 25px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bi-box-arrow-left{
+    font-size: 25px;
+}
+
+.container{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}

@@ -1,8 +1,8 @@
 @php use Illuminate\Auth\Events\Verified;use Illuminate\Support\Facades\Auth;use Illuminate\Support\Facades\DB; @endphp
 @extends('components.layout')
 
-@section('js')
-
+@section('title')
+    Account | Wigle
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{ asset('/css/account.css') }}">
@@ -17,6 +17,28 @@
         </div>
     @endif
     <div class="account-page">
+        {{--  Modal --}}
+        <div class="modal none" id="modal">
+            <div class="modal-card">
+                <header>
+                    <i class="bi bi-x-lg" onclick="document.getElementById('modal').classList.add('none')"></i>
+                </header>
+
+                <div class="modal-msg">
+                    <i class="trash bi bi-trash3-fill "></i>
+                    <h1 class="heading-msg py">Are you sure to delete <b>{{ \auth()->user()->email }}</b>?</h1>
+                </div>
+                <form action="/account/delete_account" method="post">
+                    @csrf
+                    <button class="delete" type="submit">Yes, delete</button>
+                    <button class="cancel" type="button"
+                            onclick="document.getElementById('modal').classList.add('none')">Cancel
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        {{-- Modal end --}}
         <div class="sidebar">
             <div class="wrapper-top-mid">
                 <div class="top">
@@ -29,11 +51,13 @@
                             >
                         @else
                             <img style="width: 40%" alt="photo" src="{{ asset('/icons/icons8-add-image-90.png') }}"
-                                 onclick="document.getElementById('upload_profile_photo').click()" />
+                                 onclick="document.getElementById('upload_profile_photo').click()"/>
 
-                            <form action="/account/upload/profile_photo" method="post" id="image_upload" enctype="multipart/form-data">
+                            <form action="/account/upload/profile_photo" method="post" id="image_upload"
+                                  enctype="multipart/form-data">
                                 @csrf
-                                <input type="file" name="profile_photo" id="upload_profile_photo"  onchange="document.getElementById('image_upload').submit()" hidden>
+                                <input type="file" name="profile_photo" id="upload_profile_photo"
+                                       onchange="document.getElementById('image_upload').submit()" hidden>
                             </form>
 
                         @endif
@@ -61,10 +85,16 @@
                         <i class="bi bi-bag-fill"></i>
                         <a href="/cart" class="link">Cart</a>
                     </li>
-                    <li class="link-wrapper">
-                        <i class="bi bi-bookmark-star-fill"></i>
-                        <a href="/account/list_admin_requests" class="link">Admin Requests</a>
-                    </li>
+                    @if(\auth()->user()->role === 'admin')
+                        <li class="link-wrapper">
+                            <i class="bi bi-bookmark-star-fill"></i>
+                            <a href="/account/list_admin_requests" class="link">Admin Requests</a>
+                        </li>
+                        <li class="link-wrapper">
+                            <i class="bi bi-people-fill"></i>
+                            <a href="/account/users" class="link">Users</a>
+                        </li>
+                    @endif
                 </ul>
             </div>
             <div class="bottom">
@@ -185,21 +215,27 @@
                     </div>
                 @else
                     <div class="admin-wrapper">
-                        <h1 style="margin: 0 0 20px 0">Admin Tools</h1>
+                        <h1 style="margin: 0 0 20px 0">Member's Tools</h1>
                         <div class="card-container">
                             <a href="/account/request-admin-access">
                                 <div class="card green">
                                     <div class="card-details">
                                         <h1 class="title">Request Admin Access</h1>
-                                        <p class="desc">Features like add, update, remove products and other special
-                                            rights which can be only accessed by site admins only, to maintain the
-                                            site.</p>
+                                        <p class="desc">Get access to admin rights and manage wigle.</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" onclick="document.getElementById('modal').classList.remove('none')">
+                                <div class="card red" id="delete-card">
+                                    <div class="card-details">
+                                        <h1 class="title">Delete your account</h1>
+                                        <p class="desc">Deleting your account will result in erase all your data on
+                                            wigle which can not be recovered.</p>
                                     </div>
                                 </div>
                             </a>
                         </div>
                     </div>
-
                 @endif
             </div>
         </div>

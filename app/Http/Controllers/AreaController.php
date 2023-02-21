@@ -14,7 +14,7 @@ class AreaController extends Controller
     {
         session()->forget('area');
         $area_name = DB::table('pincodes')->select("*")->where('pincode', '=', $request->pincode)->get();
-        $products = DB::select("Select * from products where pincode = '$request->pincode' and featured = true");
+        $products = DB::select("Select * from product where pincode = '$request->pincode' and featured = true");
         foreach ($area_name as $area) {
             Session::put("area", $area->area_name);
             Session::put("pincode", $area->pincode);

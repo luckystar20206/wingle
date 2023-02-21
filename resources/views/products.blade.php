@@ -1,6 +1,6 @@
 @extends('components.layout')
 @section("js")
-    <script src="/js/product.js"></script>
+    <script defer src="/js/product.js"></script>
 @endsection
 
 @section('title')
@@ -32,16 +32,18 @@
                     </form>
                 </div>
             </div>
-            <div class="filter-price">
-                <select class="filters-price-main filter" id="select-area">
-                    <option selected value="all">All</option>
-                    <option value="Low to High">Low to High</option>
-                    <option value="High to Low">High to Low</option>
-                    <option value="Mens">Mens</option>
-                    <option value="Womens">Womens</option>
-                    <option value="Kids">Kids</option>
-                </select>
-            </div>
+            <form id="filter-form" action="/products/filter={filter}" method="get">
+                <div class="filter-price">
+                    <select name="filter" class="filters-price-main filter" id="select-area">
+                        <option onclick="submitFilterForm()" value="all" selected>All</option>
+                        <option onclick="submitFilterForm()" value="Low to High">Low to High</option>
+                        <option onclick="submitFilterForm()" value="High to Low">High to Low</option>
+                        <option onclick="submitFilterForm()" value="Mens">Mens</option>
+                        <option onclick="submitFilterForm()" value="Womens">Womens</option>
+                        <option onclick="submitFilterForm()" value="Kids">Kids</option>
+                    </select>
+                </div>
+            </form>
         </div>
     </header>
     <div class="card-container">

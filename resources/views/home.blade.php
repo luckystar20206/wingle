@@ -1,7 +1,7 @@
 @php use Illuminate\Support\Facades\Session; @endphp
 @extends('components.layout')
 @section("js")
-    <script src="/js/home.js"></script>
+    <script defer src="/js/home.js"></script>
 @endsection
 
 @section("css")
