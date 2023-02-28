@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Inter:wght@400;500;600&family=Montserrat:wght@500;600&family=Raleway:wght@400;500&display=swap');
+
+.container{
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+.container .heading{
+    font-family: 'Dm sans', sans-serif;
+    font-size: 2.7rem;
+}
+
+.container .product-container{
+    display: flex;
+    gap: 10px;
+    justify-content: start;
+}

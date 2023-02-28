@@ -13,6 +13,7 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+        "razorpay/razorpay": "^2.8",
         "realrashid/sweet-alert": "^6.0",
         "stevebauman/location": "^6.6"
     },

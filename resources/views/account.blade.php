@@ -194,6 +194,14 @@
                                     </div>
                                 </div>
                             </a>
+                            <a href="/add-to-inventory">
+                                <div class="card purple">
+                                    <div class="card-details">
+                                        <h1 class="title">Add Item Inventory</h1>
+                                        <p class="desc">Create an item and push it to inventory</p>
+                                    </div>
+                                </div>
+                            </a>
                             <a href="">
                                 <div class="card blue">
                                     <div class="card-details">

@@ -325,6 +325,11 @@ body {
     box-sizing: border-box;
 }
 
+.account-page .right .admin-wrapper .card-container a .card.purple {
+    background-color: #1cb48920;
+    color: #145a5c;
+}
+
 .account-page .right .admin-wrapper .card-container a .card.green {
     background-color: #1CB43420;
     color: #145c14;

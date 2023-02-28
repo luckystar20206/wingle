@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@500;600&family=Montserrat:wght@500;600&family=Poppins:wght@400;500;600&family=Raleway:wght@400;500&display=swap');
+
+.card{
+    width: 250px;
+    height: auto;
+    overflow: hidden;
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid rgb(222, 222, 222);
+}
+
+.card .card-img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.card .card-details form{
+    display: flex;
+    flex-direction: column;
+    padding: 0 8px;
+}
+
+.card .card-details .card-title{
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    margin: 16px 0;
+}
+
+.card .card-details .pricing-cont{
+    /* background-color: #181818; */
+    border-radius: 10px;
+    color: #000;
+    font-family: 'Dm Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 5px;
+}
+
+.card .card-details .rating{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    background-color: rgba(28, 180, 52, 0.88);
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin: 6px 0;
+    font-size: 13px;
+    display: inline;
+}
+
+.card .card-details .pricing-cont .price{
+    font-size: 15px;
+    font-weight: 400;
+}
+.card .card-details .pricing-cont .price .txt-bg{
+    font-size: 20px;
+}
+
+.card .card-details .pricing-cont .add-to-cart{
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 7px;
+    background-color: transparent;
+    border: none;
+    font-size: 13px;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    transition: background-color ease-in-out .2s;
+}
+
+.card .card-details .pricing-cont a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.card .card-details .pricing-cont a .add-to-cart:hover{
+    background-color: #272727;
+}
+
+.card .card-details .pricing-cont .add-to-cart:active {
+    background-color: #000;
+}
+
+.card .card-details .pricing-cont .horizontal-line{
+    background-color: #2C2C2C;
+    width: 1px;
+    height: 40px;
+}
+
+.card .card-details .update-button{
+    background-color: blue;
+    color: white;
+    border: 1px solid blue;
+    padding: 7px;
+    font-size: 17px;
+    font-family: 'Dm sans', sans-serif;
+    border-radius: 6px;
+    cursor: pointer;
+}
+

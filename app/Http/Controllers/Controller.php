@@ -16,11 +16,6 @@ class Controller extends BaseController
 
     public function index()
     {
-        $data = [
-            'subject' => ' Test mail from wigle',
-            'body' => 'hey how you doing'
-        ];
-        \Mail::to("mrtom996@gmail.com")->send(new NewMail($data));
-        dd('Mail sent');
+
     }
 }

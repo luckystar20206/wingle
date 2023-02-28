@@ -16,56 +16,66 @@ class ProductController extends Controller
     public function index()
     {
         $pincode = Session::get("pincode");
-        $products = DB::select(/** @lang text */ "Select * from product where pincode = '$pincode' and featured = '1'");
+        $products = DB::table('products')->select('*')->where(['pincode' => $pincode, 'featured' => '1'])->get();
         return view('home', ['products' => $products]);
     }
 
     public function createproduct()
     {
-        return view("add_product");
+        $inventory = DB::table("inventories")->select("*")->get();
+        $pincodes = DB::table("pincodes")->select("*")->get();
+        return view("add_product", ["inventory" => $inventory, "pincode" => $pincodes]);
     }
 
     public function store(Request $request)
     {
-        $attributes = $request->validate([
-            'price' => ['required', 'integer'],
-            'image' => ['file'],
-            'pincode' => ['required', 'max:6'],
-            'featured' => ['required'],
-            'size' => ['required'],
+
+        $data = request()->validate([
+            'pid' => ['integer'],
+            'pincode' => ['integer'],
         ]);
 
-        if ($request->hasFile("product_image")) {
-            $image = $request->file("product_image");
-            $image_name = $image->getClientOriginalName();
-            $image->storeAs('/public/images', $image_name);
+        //check db products if item is already added or not
 
-            $product = new Product();
-            $product->product_name = $request->product_name;
-            $product->price = $request->price;
-            $product->image = $image_name;
-            $product->pincode = $request->pincode;
-            $product->featured = $request->featured;
-            $product->size = json_encode($request->size);
-            $product->category = $request->category;
-            $product->save();
-            return redirect()->to('/add-product')->with('success', 'Product added successfully');
-        } else {
-            return dd('failed to add, try again');
+        if(DB::table("products")->select("pid")->where(["pid" => $data['pid'], "pincode" => $data['pincode']])->exists()){
+            return redirect()->to('/add-product')->with("message", "Item already added");
+        }else{
+
+
+        //fetches the product details using the pid.
+
+        $inventory_item = DB::table("inventories")->select("*")->where(["pid" => $data['pid']])->get();
+
+
+        $product = new Product();
+        $product->pid = $inventory_item[0]->pid;
+        $product->p_name = $inventory_item[0]->p_name;
+        $product->p_image = $inventory_item[0]->p_image;
+        $product->p_price = $inventory_item[0]->p_price;
+        $product->p_category = $inventory_item[0]->p_category;
+        $product->p_size = $inventory_item[0]->p_size;
+        $product->pincode = $data['pincode'];
+        $product->featured = true;
+        $product->stock = $inventory_item[0]->p_stock;
+        $product->save();
+
+        return redirect()->to('/add-product')->with('message', 'Product added successfully');
+
         }
     }
 
     public function showProducts()
     {
         $pincode = Session::get("pincode");
-        $products = DB::select(/** @lang text */ "Select * from product where pincode = '$pincode'");
-//        dd($products);
+
+        $products = DB::table("products")->select("*")->where(["pincode" => $pincode])->get();
+
         return view("/products", ["products" => $products]);
     }
 
     public function productDetail($name, $id)
     {
-        $fetchedProduct = DB::table('product')->select('*')->where(['id' => $id, 'product_name' => $name])->get();
+        $fetchedProduct = DB::table('products')->select('*')->where(['pid' => $id, 'p_name' => $name])->get();
         return view('productDetail', ['productinfo' => $fetchedProduct]);
     }
 
@@ -76,20 +86,27 @@ class ProductController extends Controller
         $pid = $request->product_id;
         $uid = auth()->user()->id;
 
-        $product = DB::table('product')->select('*')->where(['id' => $pid])->get()->first();
-        $cartItem = new Cart();
-        $cartItem->pid = $pid;
-        $cartItem->uid = $uid;
-        $cartItem->pname = $product->product_name;
-        $cartItem->image = $product->image;
-        $cartItem->price = $product->price;
-        $cartItem->size = $size;
-        $cartItem->category = $product->category;
-        $cartItem->qty = $qty;
-        $cartItem->rent_period = 1;
-        $cartItem->save();
-        return redirect()->back()->with(['itemAdded' => "Item added to cart"]);
+        if (DB::table('cart')->select('*')->where('pid', $pid)->exists()) {
+            return redirect()->back()->with('exists', 'Item already added');
+        } else {
+
+            $product = DB::table('products')->select('*')->where(['pid' => $pid])->get()->first();
+            $cartItem = new Cart();
+            $cartItem->pid = $pid;
+            $cartItem->uid = $uid;
+            $cartItem->pname = $product->product_name;
+            $cartItem->image = $product->image;
+            $cartItem->price = $product->price;
+            $cartItem->size = $size;
+            $cartItem->category = $product->category;
+            $cartItem->qty = $qty;
+            $cartItem->rent_period = 1;
+            $cartItem->save();
+            return redirect()->back()->with(['itemAdded' => "Item added to cart"]);
+
+        }
     }
+
 
     public function viewCart()
     {
@@ -121,5 +138,17 @@ class ProductController extends Controller
     public function filter($filter)
     {
         dd($filter);
+    }
+
+    public function listProducts()
+    {
+        $products = DB::table('product')->select('*')->get();
+        return view('updateProduct', ['products' => $products]);
+    }
+
+    public function updateProduct(Request $request)
+    {
+        $update = DB::table('product')->where('id', $request->pid)->update(['product_name' => $request->product_name, 'price' => $request->product_price]);
+        return redirect()->back();
     }
 }

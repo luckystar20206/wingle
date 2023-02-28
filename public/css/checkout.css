@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&&family=Poppins:wght@500&family=Inter:wght@400;500;600&family=Montserrat:wght@500;600&family=Raleway:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500&family=Nunito+Sans:wght@400;500&family=DM+Sans:wght@400;500&family=Poppins:wght@500&family=Inter:wght@400;500;600&family=Montserrat:wght@500;600&family=Raleway:wght@400;500&display=swap');
+
+body{
+    background-color: gray;
+}
 
 .brand .logo{
     font-family: 'Montserrat', sans-serif;
@@ -22,9 +26,120 @@
 }
 
 .container{
-    width: 80%;
-    margin: auto;
+    width: 60%;
+    margin: 40px auto;
     display: flex;
     justify-content: center;
     gap: 20px;
+}
+
+.container .details-cont{
+    background-color: #fff;
+    padding: 20px;
+    /*width: auto;*/
+    height: auto;
+    flex: 2;
+    border-radius: 15px;
+}
+
+.container .details-cont .content{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+}
+
+.container .details-cont .heading{
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 30px;
+    margin: 10px 0 18px;
+}
+
+.container .details-cont form .form-group{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+    margin-bottom: 20px;
+    font-family: 'Dm Sans', sans-serif;
+}
+
+.container .details-cont form .form-group .form-label{
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.container .details-cont form .form-group .form-control{
+    font-family: 'Dm sans', sans-serif;
+    font-weight: 400;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+    border: 2px solid lightgray;
+    border-radius: 6px;
+    width: 100%;
+}
+
+.container .details-cont .content .view-total{
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Dm sans', sans-serif;
+    font-weight: 500;
+    font-size: 21px;
+}
+
+.container .details-cont .content form .pay-button{
+    background-color: #0d3dff;
+    width: 100%;
+    padding: 13px 0;
+    border: 1px solid #0d3dff;
+    border-radius: 7px;
+    font-family: 'Dm sans', sans-serif;
+    font-weight: 500;
+    color: #fff;
+    font-size: 17px;
+    cursor: pointer;
+    transition: all ease 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .details-cont .content .pay-button:hover{
+    background-color: #0d37e3;
+}
+
+.container .details-cont .content .pay-button:active{
+    background-color: #1a3cca;
+}
+
+/*spinner */
+.loader.d-none{
+    display: none;
+}
+.loader {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    border-top: 3px solid #FFF;
+    border-right: 3px solid transparent;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.container .order-cont{
+    flex: 1;
+    background-color: #fff;
+    height: 300px;
+    border-radius: 15px;
 }

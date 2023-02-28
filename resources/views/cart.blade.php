@@ -83,7 +83,11 @@
                 <tr>
                     <td class="field"></td>
                     <td class="value pt">
-                        <a href="/checkout" class="checkout-btn">Checkout</a>
+                        <form action="/checkout" method="post">
+                            @csrf
+                            <input type="hidden" name="subtotal" value="{{ $itemtotal + $deposit  }}">
+                            <button type="submit" class="checkout-btn">Checkout</button>
+                        </form>
                     </td>
                 </tr>
             </table>

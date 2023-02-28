@@ -1,7 +1,7 @@
 @props(['title', 'rating', 'price', 'image'])
 
 <div class="card">
-    <img src="{{ asset("storage/images/". $image) }}" alt="image" class="card-img">
+    <img src="{{ asset("public/images/". $image) }}" alt="image" class="card-img">
     <div class="card-details">
         <h1 class="card-title">{{ $title }}</h1>
         <p class="rating">

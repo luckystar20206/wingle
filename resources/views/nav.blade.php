@@ -29,12 +29,12 @@
             @auth()
                 <li>Welcome, {{ auth()->user()->name }}</li>
                 {{--                for logging out --}}
-                <form action="/logout" method="post">
+                <form style="margin: 0" action="/logout" method="post">
                     @csrf
                     <button type="submit" class="log-out-btn">Log out</button>
                 </form>
             @else
-                <li><a href="/register">Register</a></li>
+                <li><a href="/login">Login</a></li>
             @endauth
             <a href="/cart" class="button__link">
                 <button class="cart__button">Cart</button>

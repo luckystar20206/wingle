@@ -6,8 +6,10 @@ use App\Http\Controllers\AreaController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RazorpayPaymentController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
 use App\Mail\HelloMail;
@@ -65,6 +67,14 @@ Route::post('/add-area-req', [AreaController::class, 'store']);
 Route::get("/add-product", [ProductController::class, "createproduct"])->middleware("auth");
 Route::post("/add-product-post", [ProductController::class, "store"]);
 
+//add item to inventory
+Route::get('/add-to-inventory', [InventoryController::class, 'viewInventoryForm'])->middleware(['auth', 'admin']);
+Route::post('/add-to-inventory', [InventoryController::class, 'storeToInventory']);
+
+//Route for updating product
+Route::get('/update-product', [ProductController::class, 'listProducts']);
+Route::post('/update-product', [ProductController::class, 'updateProduct']);
+
 //Routes for listing and deciding admin requests + deleting account + display signed users
 Route::get('/account/list_admin_requests', [AdminController::class, 'index'])->middleware(['auth', 'verified', 'admin']);
 Route::get('/account/list_admin_request/decision', [AdminController::class, 'decideRequest'])->middleware(['auth', 'verified', 'admin']);
@@ -72,4 +82,7 @@ Route::get('/account/users', [AdminController::class, 'users'])->middleware(['au
 Route::post('/account/delete_account', [AccountController::class, 'deleteAccount'])->middleware(['auth']);
 
 //Route for checkout
-Route::get('/checkout', [CheckoutController::class, 'index']);
+Route::post('/checkout', [CheckoutController::class, 'show']);
+
+//Routes for razorpay
+Route::post('/pay', [RazorpayPaymentController::class, 'payment'])->name('payment');
