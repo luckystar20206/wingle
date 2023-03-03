@@ -43,6 +43,7 @@ Route::post('/add-to-cart', [ProductController::class, 'addToCart'])->middleware
 Route::get('/cart', [ProductController::class, 'viewCart']);
 Route::post('/update-rent-period-in-cart', [ProductController::class, 'updateRentPeriod']);
 Route::post('/update-item-quantity-in-cart', [ProductController::class, 'itemQuantity']);
+Route::post('/remove-item-from-cart', [ProductController::class, 'removeItemFromCart']);
 
 //Route for filtering the product catalogue
 Route::get('/products/filter={filter}', [ProductController::class, 'filter']);

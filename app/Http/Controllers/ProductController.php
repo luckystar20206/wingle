@@ -94,11 +94,11 @@ class ProductController extends Controller
             $cartItem = new Cart();
             $cartItem->pid = $pid;
             $cartItem->uid = $uid;
-            $cartItem->pname = $product->product_name;
-            $cartItem->image = $product->image;
-            $cartItem->price = $product->price;
+            $cartItem->pname = $product->p_name;
+            $cartItem->image = $product->p_image;
+            $cartItem->price = $product->p_price;
             $cartItem->size = $size;
-            $cartItem->category = $product->category;
+            $cartItem->category = $product->p_category;
             $cartItem->qty = $qty;
             $cartItem->rent_period = 1;
             $cartItem->save();
@@ -107,21 +107,21 @@ class ProductController extends Controller
         }
     }
 
-
     public function viewCart()
     {
         $cart_number_of_items = DB::table('cart')->count();
+        $num_of_items = Cart::count();
         if ($cart_number_of_items > 0) {
-            $cart_items = DB::table('cart')->select('*')->where(['uid' => auth()->user()->id])->get();
-            return view('cart', ['cart_items' => $cart_items]);
+//            $cart_items = DB::table('cart')->select('*')->where(['uid' => auth()->user()->id])->get();
+            $cart = Cart::all();
+            return view('cart', ['cart_items' => $cart, 'items_in_cart' => $num_of_items]);
         } else {
             return view('cart_empty');
         }
     }
-
     public function updateRentPeriod(Request $request)
     {
-//        dd($request->all());
+        dd($request->all());
         $uid = auth()->user()->id;
         $rentPeriod = DB::update("update cart set rent_period = '$request->rent_period' where pid = '$request->pid' and uid = '$uid'");
         return redirect()->back();
@@ -129,10 +129,9 @@ class ProductController extends Controller
 
     public function itemQuantity(Request $request)
     {
-//        dd($request->all());
-        $uid = auth()->user()->id;
-        $quantity = DB::update("update cart set qty = '$request->qty' where pid = '$request->pid' and uid = '$uid'");
-        return redirect()->back();
+        dd($request->all());
+        DB::table('cart')->where(['pid' => $request->pid])->update(['qty' => $request->qty]);
+        return redirect()->to('/cart');
     }
 
     public function filter($filter)
@@ -150,5 +149,11 @@ class ProductController extends Controller
     {
         $update = DB::table('product')->where('id', $request->pid)->update(['product_name' => $request->product_name, 'price' => $request->product_price]);
         return redirect()->back();
+    }
+
+    public function removeItemFromCart(Request $request){
+        $pid = $request->pid;
+        DB::table('cart')->where(['pid' => $pid])->delete();
+        return redirect()->to('/cart');
     }
 }

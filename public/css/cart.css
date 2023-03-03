@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Poppins:wght@400;500&family=Inter:wght@400;500;600&family=Montserrat:wght@500;600&family=Raleway:wght@400;500&display=swap');
 
-.heading{
+.heading {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     width: 87%;
@@ -8,7 +8,7 @@
     color: #272727;
 }
 
-.cart-table .item-card{
+.cart-table .item-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -18,34 +18,34 @@
     border-bottom: 1px solid lightgray;
 }
 
-.cart-table .item-card .col{
+.cart-table .item-card .col {
     display: flex;
     gap: 20px;
 }
 
-.cart-table .item-card .item-image{
+.cart-table .item-card .item-image {
     height: 195px;
     width: 290px;
     object-fit: cover;
 }
 
-.cart-table .item-card .col .item-details{
+.cart-table .item-card .col .item-details {
     font-family: 'Inter', sans-serif;
 }
 
-.cart-table .item-card .col .item-details .item-name{
+.cart-table .item-card .col .item-details .item-name {
     font-weight: 500;
     font-size: 25px;
     margin: 0;
 }
 
-.cart-table .item-card .col .item-details .size{
+.cart-table .item-card .col .item-details .size {
     font-weight: 400;
     font-size: 20px;
     margin: 15px 0 8px 0;
 }
 
-.cart-table .item-card .col .item-details .quantity-wrapper{
+.cart-table .item-card .col .item-details .quantity-wrapper {
     background-color: transparent;
     border: 2px solid #000;
     border-radius: 5px;
@@ -55,13 +55,13 @@
     margin-bottom: 10px;
 }
 
-.cart-table .item-card .col .item-details .quantity-wrapper label{
+.cart-table .item-card .col .item-details .quantity-wrapper label {
     margin: 0;
     cursor: pointer;
     font-size: 13px;
 }
 
-.cart-table .item-card .col .item-details .quantity-wrapper .quantity-selection{
+.cart-table .item-card .col .item-details .quantity-wrapper .quantity-selection {
     background: none;
     border: none;
     outline: none;
@@ -70,21 +70,21 @@
     font-size: 13px;
 }
 
-.cart-table .item-card .col .item-details .quantity-wrapper .quantity-selection:hover{
+.cart-table .item-card .col .item-details .quantity-wrapper .quantity-selection:hover {
     background-color: lightgray;
 }
 
-.cart-table .item-card .col .item-details .renting-period-wrapper{
+.cart-table .item-card .col .item-details .renting-period-wrapper {
     display: flex;
     flex-direction: column;
 }
 
-.cart-table .item-card .col .item-details .renting-period-wrapper .title{
+.cart-table .item-card .col .item-details .renting-period-wrapper .title {
     font-family: 'Inter', sans-serif;
     margin: 5px 0;
 }
 
-.cart-table .item-card .col .item-details .renting-period-wrapper .renting-days-selection{
+.cart-table .item-card .col .item-details .renting-period-wrapper .renting-days-selection {
     width: max-content;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
@@ -94,50 +94,63 @@
     margin: 0 0 5px 0;
 }
 
-.cart-table .item-card .col .item-details .price-w-day{
+.cart-table .item-card .col .item-details .price-w-day {
     font-family: 'Inter', sans-serif;
     font-size: 14px;
 }
 
-.cart-table .item-card .col .item-details .price-w-day .red-clr{
+.cart-table .item-card .col .item-details form .remove-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: 'Poppins', SansSerif;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.cart-table .item-card .col .item-details .price-w-day .red-clr {
     color: red;
 }
 
-.cart-table .item-card .col .item-details .price-w-day  .txt-bg{
+.cart-table .item-card .col .item-details .price-w-day .txt-bg {
     font-size: 16px;
 }
 
-.cart-table .item-card .final-price .price{
+.cart-table .item-card .final-price .price {
     font-family: 'Dm Sans', sans-serif;
     font-weight: 500;
     font-size: 20px;
 }
 
-.cart-table .item-card .final-price .price .txt-bg{
+.cart-table .item-card .final-price .price .txt-bg {
     font-size: 30px;
 }
 
-.cart-table .total-container{
+.cart-table .total-container {
     width: 87%;
     margin: auto;
     display: flex;
     flex-direction: column;
     /*align-items: flex-end;*/
     padding: 20px 0;
-    font-family: 'Poppins' ,sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
-.cart-table .total-container table{
+.cart-table .total-container table {
     /*border: 1px solid #000;*/
     /*width: 20%;*/
     padding: 10px 0;
 }
 
-.cart-table .total-container table tr .value{
+.cart-table .total-container table tr .value {
     text-align: right;
 }
 
-.total-container table tr .field{
+.total-container table tr .field {
     display: flex;
     justify-content: space-between;
     width: 20%;
@@ -147,16 +160,16 @@
     font-size: 25px;
 }
 
-.cart-table .total-container table{
+.cart-table .total-container table {
     border-collapse: collapse;
 }
 
-.cart-table .total-container table tr:nth-child(2){
+.cart-table .total-container table tr:nth-child(2) {
     border-bottom: thin solid lightgray;
     padding-bottom: 10px;
 }
 
-.cart-table .total-container table tr .value .checkout-btn{
+.cart-table .total-container table tr .value .checkout-btn {
     background-color: #0d17e6;
     color: #fff;
     padding: 10px 25px;
@@ -168,10 +181,10 @@
     transition: background-color ease 0.2s;
 }
 
-.cart-table .total-container table tr .value .checkout-btn:hover{
+.cart-table .total-container table tr .value .checkout-btn:hover {
     background-color: #0000b5;
 }
 
-.cart-table .total-container table tr .value.pt{
+.cart-table .total-container table tr .value.pt {
     padding-top: 10px;
 }
