@@ -24,12 +24,14 @@
                     <div class="item-details">
                         <h2 class="item-name">{{ $item->pname }}</h2>
                         <p class="size"><strong>Size</strong>: {{ $item->size }}</p>
-                        <form id="update_qty_form" action="/update-item-quantity-in-cart" method="post">
+                        <form class="update_qty_form" action="/update-item-quantity-in-cart" method="post">
                             @csrf
                             <div class="quantity-wrapper">
                                 <label for="select-qty">Qty</label>
-                                <select name="qty" onclick="submitQtyForm()" class="quantity-selection" id="select-qty">
+                                <select name="qty" onclick="form.submit()" class="quantity-selection">
+                                    <option value="{{ $item->qty }}" selected>{{ $item->qty }}</option>
                                     <option value="1">1</option>
+                                    s
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
@@ -38,11 +40,12 @@
                             </div>
                             <input type="hidden" name="pid" value="{{ $item->pid }}">
                         </form>
-                        <form id="update_rentperiod_form" action="/update-rent-period-in-cart" method="post">
+                        <form action="/update-rent-period-in-cart" method="post">
                             @csrf
                             <div class="renting-period-wrapper">
                                 <label class="title">Number of days (rent period):</label>
-                                <select onclick="submitRentForm()" name="rent_period" class="renting-days-selection">
+                                <select onclick="form.submit()" name="rent_period" class="renting-days-selection">
+                                    <option value="{{ $item->rent_period }}">{{ $item->rent_period }}</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -75,7 +78,8 @@
             <table>
                 <tr>
                     <td class="field"><span>Items Total</span><span>:</span></td>
-                    <td class="value">₹1000
+                    <td class="value">Rs.
+
                     </td>
                 </tr>
                 <tr>

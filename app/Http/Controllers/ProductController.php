@@ -31,35 +31,35 @@ class ProductController extends Controller
     {
 
         $data = request()->validate([
-            'pid' => ['integer'],
-            'pincode' => ['integer'],
+            'pid' => ['integer', 'required'],
+            'pincode' => ['integer', 'required'],
         ]);
 
         //check db products if item is already added or not
 
-        if(DB::table("products")->select("pid")->where(["pid" => $data['pid'], "pincode" => $data['pincode']])->exists()){
+        if (DB::table("products")->select("pid")->where(["pid" => $data['pid'], "pincode" => $data['pincode']])->exists()) {
             return redirect()->to('/add-product')->with("message", "Item already added");
-        }else{
+        } else {
 
 
-        //fetches the product details using the pid.
+            //fetches the product details using the pid.
 
-        $inventory_item = DB::table("inventories")->select("*")->where(["pid" => $data['pid']])->get();
+            $inventory_item = DB::table("inventories")->select("*")->where(["pid" => $data['pid']])->get();
 
 
-        $product = new Product();
-        $product->pid = $inventory_item[0]->pid;
-        $product->p_name = $inventory_item[0]->p_name;
-        $product->p_image = $inventory_item[0]->p_image;
-        $product->p_price = $inventory_item[0]->p_price;
-        $product->p_category = $inventory_item[0]->p_category;
-        $product->p_size = $inventory_item[0]->p_size;
-        $product->pincode = $data['pincode'];
-        $product->featured = true;
-        $product->stock = $inventory_item[0]->p_stock;
-        $product->save();
+            $product = new Product();
+            $product->pid = $inventory_item[0]->pid;
+            $product->p_name = $inventory_item[0]->p_name;
+            $product->p_image = $inventory_item[0]->p_image;
+            $product->p_price = $inventory_item[0]->p_price;
+            $product->p_category = $inventory_item[0]->p_category;
+            $product->p_size = $inventory_item[0]->p_size;
+            $product->pincode = $data['pincode'];
+            $product->featured = true;
+            $product->stock = $inventory_item[0]->p_stock;
+            $product->save();
 
-        return redirect()->to('/add-product')->with('message', 'Product added successfully');
+            return redirect()->to('/add-product')->with('message', 'Product added successfully');
 
         }
     }
@@ -101,7 +101,13 @@ class ProductController extends Controller
             $cartItem->category = $product->p_category;
             $cartItem->qty = $qty;
             $cartItem->rent_period = 1;
-            $cartItem->save();
+            $cartItem->item_total = $product->p_price * $qty;
+//            $cartItem->save();
+
+            $product = Product::where(['pid' => $pid])->get();
+            $product->decrement('qty');
+            dd($product);
+
             return redirect()->back()->with(['itemAdded' => "Item added to cart"]);
 
         }
@@ -119,9 +125,9 @@ class ProductController extends Controller
             return view('cart_empty');
         }
     }
+
     public function updateRentPeriod(Request $request)
     {
-        dd($request->all());
         $uid = auth()->user()->id;
         $rentPeriod = DB::update("update cart set rent_period = '$request->rent_period' where pid = '$request->pid' and uid = '$uid'");
         return redirect()->back();
@@ -129,7 +135,6 @@ class ProductController extends Controller
 
     public function itemQuantity(Request $request)
     {
-        dd($request->all());
         DB::table('cart')->where(['pid' => $request->pid])->update(['qty' => $request->qty]);
         return redirect()->to('/cart');
     }
@@ -151,7 +156,8 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
-    public function removeItemFromCart(Request $request){
+    public function removeItemFromCart(Request $request)
+    {
         $pid = $request->pid;
         DB::table('cart')->where(['pid' => $pid])->delete();
         return redirect()->to('/cart');

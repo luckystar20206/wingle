@@ -36,9 +36,9 @@
                         @foreach($inventory as $item)
                             <option value="{{ $item->pid }}">{{ $item->p_name }}</option>
                         @endforeach
-                    </select>
+                    </select><br>
 
-                    @error('product_name')
+                    @error('pid')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -54,9 +54,9 @@
                         @foreach($pincode as $pin)
                             <option value="{{ $pin->pincode }}">{{ $pin->pincode}} -> {{ $pin->area_name }}</option>
                         @endforeach
-                    </select>
+                    </select><br>
 
-                    @error('product_name')
+                    @error('pincode')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
