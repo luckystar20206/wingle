@@ -13,4 +13,5 @@ class Product extends Model
 
     public $timestamps = false;
     public $table = "products";
+    protected $primaryKey = "pid";
 }

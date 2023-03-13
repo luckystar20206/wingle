@@ -13,7 +13,8 @@
     <div class="contact">
         <h1 class="title">Love to hear from you,<br>Get in touch👋</h1>
 
-        <form class="contact-frm" method="POST" action="">
+        <form class="contact-frm" method="POST" action="/send-email">
+            @csrf
             <div class="form-group flex">
                 <input type="text" class="input flex-1" id="" name="First_name" placeholder="First name"/>
                 <input type="text" class="input flex-1" id="" name="Last_name" placeholder="Last name"/>

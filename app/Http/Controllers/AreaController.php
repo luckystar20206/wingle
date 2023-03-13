@@ -22,10 +22,10 @@ class AreaController extends Controller
             Session::put("pincode", $area->pincode);
             Session::put("products", $products);
 
-            return redirect('/');
+            return redirect('/products');
         }
         $message = "Sorry! we are not yet in this area";
-        return redirect()->to('/')->with(['error_area' => $message]);
+        return redirect()->to('/#getting-started')->with(['error_area' => $message]);
     }
 
     public function create()

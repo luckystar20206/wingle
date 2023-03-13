@@ -85,6 +85,10 @@
                         <i class="bi bi-bag-fill"></i>
                         <a href="/cart" class="link">Cart</a>
                     </li>
+                    <li class="link-wrapper">
+                        <i class="bi bi-bag-fill"></i>
+                        <a href="/account/orders" class="link">Orders</a>
+                    </li>
                     @if(\auth()->user()->role === 'admin')
                         <li class="link-wrapper">
                             <i class="bi bi-bookmark-star-fill"></i>

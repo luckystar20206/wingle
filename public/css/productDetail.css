@@ -1,10 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&&family=Poppins:wght@500&family=Inter:wght@400;500;600&family=Montserrat:wght@500;600&family=Raleway:wght@400;500&display=swap');
 
+.alert-success{
+    color: green;
+    background: #dbecdb;
+    padding: 10px;
+    width: max-content;
+    margin: 20px auto 0 auto;
+    font-family: 'DM sans', sans-serif;
+    border: 1px solid green;
+    border-radius: 4px;
+}
+
 .row {
     width: 85%;
     display: flex;
     /*align-items: center;*/
-    margin: 50px auto auto;
+    margin: 20px auto auto;
     gap: 30px;
 }
 

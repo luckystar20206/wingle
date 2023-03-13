@@ -4,18 +4,12 @@ use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\EmailController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RazorpayPaymentController;
-use App\Http\Controllers\SessionController;
-use App\Http\Controllers\UserController;
-use App\Mail\HelloMail;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\TestEmail;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,25 +27,27 @@ Auth::routes(['verify' => true]);
 
 //Routes for searching area and setting pincode
 Route::get('/', [ProductController::class, 'index']);
-Route::get('/search-pincode', [AreaController::class, 'searchArea']);
+Route::get('/search-pincode', [AreaController::class, 'searchArea'])->name('search-pincode');
 Route::get('/change-area', [AreaController::class, 'searchArea']);
 
 // Routes regarding products, product detail, add to cart and update cart
 Route::get('/products', [ProductController::class, 'showProducts'])->middleware(['checkusersession']);
 Route::get('/products/product_name={name}&id={id}', [ProductController::class, 'productDetail']);
 Route::post('/add-to-cart', [ProductController::class, 'addToCart'])->middleware('auth');
-Route::get('/cart', [ProductController::class, 'viewCart']);
+Route::get('/cart', [ProductController::class, 'viewCart'])->middleware(['auth']);
 Route::post('/update-rent-period-in-cart', [ProductController::class, 'updateRentPeriod']);
 Route::post('/update-item-quantity-in-cart', [ProductController::class, 'itemQuantity']);
 Route::post('/remove-item-from-cart', [ProductController::class, 'removeItemFromCart']);
 
 //Route for filtering the product catalogue
-Route::get('/products/filter={filter}', [ProductController::class, 'filter']);
+Route::get('/products/price-filter', [ProductController::class, 'priceFilter'])->middleware(['auth','checkusersession']);
 
 //Route for contact view
 Route::get('/contact', function () {
     return view('contact');
 });
+
+Route::post('/send-mail', [HomeController::class, 'contactEmail']);
 
 //Routes for account and it's integrated functions
 Route::get('/account', [AccountController::class, 'index'])->middleware('auth');
@@ -86,4 +82,9 @@ Route::post('/account/delete_account', [AccountController::class, 'deleteAccount
 Route::post('/checkout', [CheckoutController::class, 'show']);
 
 //Routes for razorpay
-Route::post('/pay', [RazorpayPaymentController::class, 'payment'])->name('payment');
+Route::post('/pay', [RazorpayPaymentController::class, 'makeOrder'])->name('make-order')->middleware(['auth', 'checkusersession', 'verified']);
+Route::get('/success', [RazorpayPaymentController::class, 'success'])->name('success')->middleware(['auth', 'checkusersession', 'verified']);
+
+//Route for viewing orders
+Route::get('/account/orders', [HomeController::class, "viewOrders"])->name("view-orders")->middleware(['auth']);
+

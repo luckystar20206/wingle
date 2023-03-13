@@ -25,7 +25,7 @@ class AccountController extends Controller
 
         $profile_photo->storeAs('/public/images', $photo_name);
         DB::update(/** @lang text */ "update users set profile_photo = '$photo_name' where id = '$user_id'");
-        return redirect()->to('/account');
+        return redirect()->back();
     }
 
     public function saveChanges(Request $request)

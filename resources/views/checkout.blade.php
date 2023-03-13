@@ -1,3 +1,4 @@
+@php use App\Models\Cart;use Illuminate\Support\Facades\Auth; @endphp
 @extends('components.layout')
 
 @section('css')
@@ -15,7 +16,7 @@
 @section('content')
     <div class="brand">
         <a href="/" class="logo">Wigle</a>
-        <a href="{{ url()->previous() }}"><i class="bi bi-box-arrow-left"></i></a>
+        <a href="{{ url('/cart') }}"><i class="bi bi-box-arrow-left"></i></a>
     </div>
     <div class="container">
         <div class="details-cont">
@@ -30,14 +31,17 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="email">Email address</label>
-                        <input id="email" class="form-control" name="email" type="email" value="{{ $userdetails->email }}"
+                        <input id="email" class="form-control" name="email" type="email"
+                               value="{{ $userdetails->email }}"
                                placeholder="Enter your email address"
                                required>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="address">Delivery Address</label>
-                        <input id="address" class="form-control" name="address" type="text" value="{{ $userdetails->address }}"
+                        <input id="addressByText" class="form-control" name="address" type="text"
+                               value="{{ $userdetails->address }}"
                                placeholder="Enter your delivery address"
+                               onchange="showAddressViaMap()"
                                required>
                     </div>
                     <div class="view-total">
@@ -53,6 +57,46 @@
                 </form>
             </div>
         </div>
-        <div class="order-cont"></div>
+        <div class="order-cont" id="orderContainer">
+            <div class="maps">
+                <iframe
+                    width="100%"
+                    height="100%"
+                    frameborder="0"
+                    scrolling="no"
+                    marginheight="0"
+                    marginwidth="0"
+                    id="gmap_canvas"
+                    src=""
+                >
+                </iframe>
+                <br/>
+            </div>
+            <div class="order-summary">
+                <h1 class="title">Order Summary</h1>
+                @php $totalAmount = 0 @endphp
+                @foreach($cartItems as $cartItem)
+                    <div class="detail-wrapper">
+                        <p>{{ $cartItem->pname }}</p>
+                        <p>{{ $cartItem->item_total }}</p>
+                    </div>
+                    @php
+                        $totalAmount+= $cartItem->item_total;
+                    @endphp
+                @endforeach
+                <div class="detail-wrapper subtotal">
+                    <p>Items Total:</p>
+                    <p>{{ $totalAmount }}</p>
+                </div>
+                <div class="detail-wrapper">
+                    <p>Deposit:</p>
+                    <p>Rs. 299</p>
+                </div>
+                <div class="detail-wrapper subtotal">
+                    <p>Subtotal:</p>
+                    <p>Rs. {{ $subtotal }}</p>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use \Illuminate\Support\Facades\Auth;
 use function GuzzleHttp\json_encode;
 
 class ProductController extends Controller
@@ -15,9 +16,11 @@ class ProductController extends Controller
 
     public function index()
     {
-        $pincode = Session::get("pincode");
-        $products = DB::table('products')->select('*')->where(['pincode' => $pincode, 'featured' => '1'])->get();
-        return view('home', ['products' => $products]);
+        // $pincode = Session::get("pincode");
+        // $products = DB::table('products')->select('*')->where(['pincode' => $pincode, 'featured' => '1'])->get();
+        // return view('home', ['products' => $products]);
+
+        return view("landing");
     }
 
     public function createproduct()
@@ -86,10 +89,9 @@ class ProductController extends Controller
         $pid = $request->product_id;
         $uid = auth()->user()->id;
 
-        if (DB::table('cart')->select('*')->where('pid', $pid)->exists()) {
+        if (DB::table('cart')->select('*')->where(['pid' => $pid, 'uid' => $uid])->exists()) {
             return redirect()->back()->with('exists', 'Item already added');
         } else {
-
             $product = DB::table('products')->select('*')->where(['pid' => $pid])->get()->first();
             $cartItem = new Cart();
             $cartItem->pid = $pid;
@@ -102,11 +104,7 @@ class ProductController extends Controller
             $cartItem->qty = $qty;
             $cartItem->rent_period = 1;
             $cartItem->item_total = $product->p_price * $qty;
-//            $cartItem->save();
-
-            $product = Product::where(['pid' => $pid])->get();
-            $product->decrement('qty');
-            dd($product);
+            $cartItem->save();
 
             return redirect()->back()->with(['itemAdded' => "Item added to cart"]);
 
@@ -115,12 +113,11 @@ class ProductController extends Controller
 
     public function viewCart()
     {
-        $cart_number_of_items = DB::table('cart')->count();
-        $num_of_items = Cart::count();
-        if ($cart_number_of_items > 0) {
-//            $cart_items = DB::table('cart')->select('*')->where(['uid' => auth()->user()->id])->get();
-            $cart = Cart::all();
-            return view('cart', ['cart_items' => $cart, 'items_in_cart' => $num_of_items]);
+        $cart_num_items = Cart::where(['uid' => Auth::id()])->count();
+
+        if ($cart_num_items > 0) {
+            $cart = Cart::where(array('uid' => Auth::id()))->get();
+            return view('cart', ['cart_items' => $cart, 'items_in_cart' => $cart_num_items]);
         } else {
             return view('cart_empty');
         }
@@ -128,20 +125,37 @@ class ProductController extends Controller
 
     public function updateRentPeriod(Request $request)
     {
-        $uid = auth()->user()->id;
-        $rentPeriod = DB::update("update cart set rent_period = '$request->rent_period' where pid = '$request->pid' and uid = '$uid'");
+        $price = $request->price;
+        $rent_period = $request->rent_period;
+        $qty = $request->qty;
+
+        DB::table('cart')->where(['pid' => $request->pid])->update(['rent_period' => $request->rent_period, 'item_total' => $price * $rent_period * $qty]);
         return redirect()->back();
     }
 
     public function itemQuantity(Request $request)
     {
-        DB::table('cart')->where(['pid' => $request->pid])->update(['qty' => $request->qty]);
+        $price = $request->price;
+        $rent_period = $request->rent_period;
+        $qty = $request->qty;
+
+        DB::table('cart')->where(['pid' => $request->pid])->update(['qty' => $request->qty, 'item_total' => $price * $rent_period * $qty]);
         return redirect()->to('/cart');
     }
 
-    public function filter($filter)
+    public function priceFilter(Request $request)
     {
-        dd($filter);
+        $filterName = $request->filter;
+        if($filterName === "ASC" || $filterName === "DESC"){
+            $products = Product::where(['pincode' => \session()->get('pincode')])->orderBy('p_price', $filterName)->get();
+    }elseif($filterName === "all"){
+
+        $products = Product::where(['pincode' => \session()->get('pincode')])->get();
+    
+    }else{
+            $products = Product::where(['pincode' => \session()->get('pincode'), 'p_category' => $filterName])->get();
+    }
+        return view('products', ['products' => $products]);
     }
 
     public function listProducts()
@@ -159,7 +173,8 @@ class ProductController extends Controller
     public function removeItemFromCart(Request $request)
     {
         $pid = $request->pid;
-        DB::table('cart')->where(['pid' => $pid])->delete();
+        $uid = Auth::id();
+        DB::table('cart')->where(['pid' => $pid, 'uid' => $uid])->delete();
         return redirect()->to('/cart');
     }
 }

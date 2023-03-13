@@ -45,6 +45,7 @@ header .filter-cont .filter{
 
 .display-area form .dropdown-area{
     position: relative;
+    cursor: pointer;
 }
 
 .display-area form .dropdown-area .dropdown-input .show_area {

@@ -15,5 +15,8 @@
         "sass": "^1.56.1",
         "vite": "^4.0.0",
         "vue": "^3.2.37"
+    },
+    "dependencies": {
+        "@emailjs/browser": "^3.10.0"
     }
 }

@@ -12,3 +12,6 @@ dropdownArea.addEventListener('click', ()=>{
     dropdownContent.classList.toggle('d-none');
     arrowUp.classList.toggle("bi-chevron-up")
 })
+
+
+

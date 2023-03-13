@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use \Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CheckoutController extends Controller
 {
@@ -11,7 +14,9 @@ class CheckoutController extends Controller
     {
         $user_id = auth()->user()->id;
         $subtotal = $request->subtotal;
-        $user_details = DB::table('users')->select('*')->where(['id' => $user_id])->get()->first();
-        return view('checkout', ['userdetails' => $user_details, 'subtotal' => $subtotal]);
+        $user_details = User::where(['id' => $user_id])->first();
+        $cartItems = Cart::where(['uid' => Auth::id()])->get();
+        return view('checkout', ['userdetails' => $user_details, 'subtotal' => $subtotal, 'cartItems' => $cartItems]);
     }
+
 }

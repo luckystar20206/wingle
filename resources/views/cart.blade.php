@@ -1,11 +1,8 @@
+@php use App\Models\Product; @endphp
 @extends('components.layout')
 
 @section("css")
     <link rel="stylesheet" href="{{ asset('/css/cart.css')}}">
-@endsection
-
-@section("js")
-    <script defer src="{{ asset('/js/cart.js') }}"></script>
 @endsection
 
 @section('title')
@@ -15,6 +12,16 @@
 @section('content')
     @php $totalAmount = 0; @endphp
     @include('nav')
+    @if(session()->has("success"))
+        <p>{{ session()->get("success") }}</p>
+        @php session()->remove("success") @endphp
+    @elseif(session()->has("failed"))
+        <p>{{ session()->get("failed") }}</p>
+        @php session()->remove("failed") @endphp
+    @elseif(session()->has("order-confirmed"))
+        <p>{{ session()->get("order-confirmed") }}</p>
+        @php session()->remove("order-confirmed") @endphp
+    @endif
     <h1 class="heading">Your Cart</h1>
     <div class="cart-table">
         @foreach($cart_items as $item)
@@ -31,7 +38,6 @@
                                 <select name="qty" onclick="form.submit()" class="quantity-selection">
                                     <option value="{{ $item->qty }}" selected>{{ $item->qty }}</option>
                                     <option value="1">1</option>
-                                    s
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
@@ -39,6 +45,8 @@
                                 </select>
                             </div>
                             <input type="hidden" name="pid" value="{{ $item->pid }}">
+                            <input type="hidden" name="price" value="{{ $item->price }}">
+                            <input type="hidden" name="rent_period" value="{{ $item->rent_period }}">
                         </form>
                         <form action="/update-rent-period-in-cart" method="post">
                             @csrf
@@ -53,6 +61,8 @@
                                     <option value="5">5</option>
                                 </select>
                                 <input type="hidden" name="pid" value="{{ $item->pid }}">
+                                <input type="hidden" name="qty" value="{{ $item->qty }}">
+                                <input type="hidden" name="price" value="{{ $item->price }}">
                             </div>
                             <input type="hidden" name="pid" value="{{ $item->pid }}">
                         </form>
@@ -79,6 +89,12 @@
                 <tr>
                     <td class="field"><span>Items Total</span><span>:</span></td>
                     <td class="value">Rs.
+                        @php
+                            for ($i=0; $i<$items_in_cart; $i++){
+                                $totalAmount += $cart_items[$i]->item_total;
+                            }
+                            echo $totalAmount;
+                        @endphp
 
                     </td>
                 </tr>
@@ -88,14 +104,14 @@
                 </tr>
                 <tr>
                     <td class="field"><span>Cart Total</span><span>:</span></td>
-                    <td class="value">₹{{ $itemtotal + $deposit  }}</td>
+                    <td class="value">₹{{ $totalAmount + $deposit  }}</td>
                 </tr>
                 <tr>
                     <td class="field"></td>
                     <td class="value pt">
                         <form action="/checkout" method="post">
                             @csrf
-                            <input type="hidden" name="subtotal" value="{{ $itemtotal + $deposit  }}">
+                            <input type="hidden" name="subtotal" value="{{ $totalAmount + $deposit  }}">
                             <button type="submit" class="checkout-btn">Checkout</button>
                         </form>
                     </td>
