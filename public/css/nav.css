@@ -1,50 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Raleway:wght@400;500&display=swap');
-body{
+
+body {
     margin: 0;
     padding: 0;
 }
-nav{
-/*    background-color: #fff;*/
+
+nav {
+    /*    background-color: #fff;*/
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 40px;
 }
 
-nav .nav__left{
+nav .nav__left {
     display: flex;
     align-items: center;
 }
 
-nav .nav__left .nav__brand{
+nav .nav__left .nav__brand {
     font-family: 'Montserrat', sans-serif;
 }
 
-nav .nav__left .nav__brand h1 a{
+nav .nav__left .nav__brand h1 a {
     color: #0D0D0D;
     text-decoration: none;
 }
 
 
-nav .nav__left .nav__items{
+nav .nav__left .nav__items {
     display: flex;
     list-style: none;
     gap: 20px;
     font-family: 'Raleway', sans-serif;
 }
-nav .nav__left .nav__items li a, .nav__right .nav__items li a{
+
+nav .nav__left .nav__items li a,
+.nav__right .nav__items li a {
     text-decoration: none;
     color: #515151;
     font-weight: 500;
 }
 
-nav .nav__left .nav__items li a:hover, .nav__right .nav__items li a:hover{
+nav .nav__left .nav__items li a:hover,
+.nav__right .nav__items li a:hover {
     border-bottom: 2px solid #515151;
     color: black;
     /*text-decoration: underline;*/
 }
 
-nav .nav__right .nav__items{
+nav .nav__right .nav__items {
     display: flex;
     align-items: center;
     list-style: none;
@@ -52,7 +57,7 @@ nav .nav__right .nav__items{
     font-family: 'Raleway', sans-serif;
 }
 
-nav .nav__right .nav__items .button__link .cart__button{
+nav .nav__right .nav__items .button__link .cart__button {
     background-color: #000000;
     color: #fff;
     border: none;
@@ -65,7 +70,7 @@ nav .nav__right .nav__items .button__link .cart__button{
     cursor: pointer;
 }
 
-nav .nav__right .nav__items .log-out-btn{
+nav .nav__right .nav__items .log-out-btn {
     background: transparent;
     border: 1px solid black;
     padding: 8px 10px;
@@ -76,8 +81,128 @@ nav .nav__right .nav__items .log-out-btn{
     cursor: pointer;
 }
 
-nav .nav__right .nav__items .log-out-btn:hover{
+nav .nav__right .nav__items .log-out-btn:hover {
     background-color: #181818;
     color: white;
-;
+    ;
+}
+
+.menu {
+    display: none;
+}
+
+.d-none{
+    display: none;
+}
+
+
+@media (max-width: 768px) {
+    nav .nav__left .nav__items {
+        /* display: none; */
+        flex-direction: column;
+        padding: 0;
+        position: fixed;
+        z-index: 100;
+        width: 20%;
+        background-color: #000;
+        padding: 18px 40px;
+        justify-content: center;
+        right: -270px;
+        top: 0;
+        text-align: right;
+        height: 100vh;
+        margin: 0;
+        transition: all ease 0.2s;
+    }
+
+    .menu{
+        position: relative;
+        z-index: 1000;
+    }
+
+    .menu.white{
+        color: white;
+    }
+
+    nav .nav__left .nav__items.show{
+        display: flex;
+        right: 0;
+    }
+
+    nav .nav__left .nav__items li {
+        padding: 10px;
+    }
+
+
+    nav .nav__left .nav__items li a{
+        color: white;
+        font-size: 25px;
+    }
+
+    nav .nav__right .nav__items li a.white{
+        color: white;
+        z-index: 999;
+    }
+
+
+    nav .nav__right{
+        position:absolute;
+        top: 12px;
+        right: 40px;
+    }
+
+    nav .nav__left {
+        display: block;
+    }
+
+    nav .nav__right .nav__items .log-out-btn {
+
+        display: none;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    nav .nav__right .nav__items .button__link .cart__button {
+        display: none;
+    }
+
+    header .hero {
+        width: 80%;
+    }
+
+    header .hero .hero-title{
+        font-size: 50px;
+    }
+
+    header .hero .hero-title .bg-splash{
+        width: 234px;
+    }
+
+    .pincode-wrapper .heading {
+        width: 50%;
+    }
+
+    .pincode-section .container .box-black {
+        display: none;
+    }
+
+    .pincode-container .container{
+        flex-wrap: wrap;
+    }
+
+    .contact-section{
+        flex-wrap: wrap;
+        height: 100%;
+    }
+
+    .pincode-section .container{
+        flex-wrap: wrap;
+    }
+
+}
+
+@media (max-width: 576px){
+    
 }

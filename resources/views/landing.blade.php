@@ -53,6 +53,9 @@
                                        value="{{ session()->get('pincode')}}" : value="" @endif class="form-control"
                                        placeholder="Example: 390010" / required>
                                 <button type="submit">View products</button>
+                                @if(session()->has('error_area'))
+                                    <p style="color: red; margin: 2px 0;">{{ session()->get('error_area') }}</p> 
+                                @endif
                             </form>
                         </div>
                     </div>

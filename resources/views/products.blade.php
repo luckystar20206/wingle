@@ -42,7 +42,7 @@
                             <option value="DESC">High to low</option>
                             <option value="Mens">Mens</option>
                             <option value="Womens">Womens</option>
-                            <option value="Kids">Kids</option>
+                            <option value="Kids">Kids</option>  
                         </select>
                     </div>
                 </form>

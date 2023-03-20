@@ -1,16 +1,20 @@
-@php use Illuminate\Auth\Events\Verified;use Illuminate\Support\Facades\Auth;use Illuminate\Support\Facades\DB; @endphp
+@php
+    use Illuminate\Auth\Events\Verified;
+    use Illuminate\Support\Facades\Auth;
+    use Illuminate\Support\Facades\DB;
+@endphp
 @extends('components.layout')
 @section('title')
     Admin Requests | Wigle
 @endsection
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-            crossorigin="anonymous"></script>
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
 @endsection
 @section('css')
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('/css/account.css') }}">
 @endsection
 @section('content')
@@ -49,7 +53,7 @@
                 </ul>
             </div>
             <div class="bottom">
-                @if(!Auth::user()->hasVerifiedEmail())
+                @if (!Auth::user()->hasVerifiedEmail())
                     <form method="get" action="/email/verify" style="margin-bottom: 10px;">
                         @csrf
                         <button class="verify-button">Verify Email</button>
@@ -67,23 +71,38 @@
                 It also shows details about their status.</p>
             <table class="table table-bordered my-5 border border-2 text-center">
                 <thead>
-                <tr>
-                    <th scope="col">User id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Role</th>
-                </tr>
+                    <tr>
+                        <th scope="col">User id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Permission</th>
+                    </tr>
                 </thead>
-                @foreach($users as $user)
+                @foreach ($users as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->phone }}</td>
                         <td>{{ $user->address }}</td>
-                        <td><p class="{{ $user->role }}">{{ $user->role }}</p></td>
+                        <td>
+                            <p class="{{ $user->role }}">{{ $user->role }}</p>
+                        </td>
+                        <form action="/account/promote_admin" method="POST">
+                            @csrf
+                            <td>
+                                @if ($user->role == 'admin')
+                                    <input type="hidden" value="{{ $user->id }}" name="uid">
+                                    <button class="btn btn-danger" type="submit" name="permission" value="remove-admin">Remove admin</button>
+                                @else
+                                    <input type="hidden" value="{{ $user->id }}" name="uid">
+                                    <button class="btn btn-success" type="submit" name="permission" value="promote-admin">Promote admin</button>
+                                @endif
+                            </td>
+                        </form>
                     </tr>
                 @endforeach
             </table>

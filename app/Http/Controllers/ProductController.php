@@ -71,7 +71,7 @@ class ProductController extends Controller
     {
         $pincode = Session::get("pincode");
 
-        $products = DB::table("products")->select("*")->where(["pincode" => $pincode])->get();
+        $products = Product::where(['pincode' => $pincode])->get();
 
         return view("/products", ["products" => $products]);
     }

@@ -91,10 +91,6 @@
                     </li>
                     @if(\auth()->user()->role === 'admin')
                         <li class="link-wrapper">
-                            <i class="bi bi-bookmark-star-fill"></i>
-                            <a href="/account/list_admin_requests" class="link">Admin Requests</a>
-                        </li>
-                        <li class="link-wrapper">
                             <i class="bi bi-people-fill"></i>
                             <a href="/account/users" class="link">Users</a>
                         </li>
@@ -206,7 +202,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a href="">
+                            <a href="/update-product">
                                 <div class="card blue">
                                     <div class="card-details">
                                         <h1 class="title">Update Product</h1>

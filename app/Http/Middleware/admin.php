@@ -19,7 +19,7 @@ class admin
         if(auth()->user()->role === 'admin'){
 
         }else{
-            return redirect('/');
+            abort(403, 'Unauthorized action.');
         }
         return $next($request);
 

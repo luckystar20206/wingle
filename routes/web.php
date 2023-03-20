@@ -40,7 +40,7 @@ Route::post('/update-item-quantity-in-cart', [ProductController::class, 'itemQua
 Route::post('/remove-item-from-cart', [ProductController::class, 'removeItemFromCart']);
 
 //Route for filtering the product catalogue
-Route::get('/products/price-filter', [ProductController::class, 'priceFilter'])->middleware(['auth','checkusersession']);
+Route::get('/products/price-filter', [ProductController::class, 'priceFilter']);
 
 //Route for contact view
 Route::get('/contact', function () {
@@ -73,8 +73,8 @@ Route::get('/update-product', [ProductController::class, 'listProducts']);
 Route::post('/update-product', [ProductController::class, 'updateProduct']);
 
 //Routes for listing and deciding admin requests + deleting account + display signed users
-Route::get('/account/list_admin_requests', [AdminController::class, 'index'])->middleware(['auth', 'verified', 'admin']);
-Route::get('/account/list_admin_request/decision', [AdminController::class, 'decideRequest'])->middleware(['auth', 'verified', 'admin']);
+// Route::get('/account/list_admin_requests', [AdminController::class, 'index'])->middleware(['auth', 'verified', 'admin']);
+// Route::get('/account/list_admin_request/decision', [AdminController::class, 'decideRequest'])->middleware(['auth', 'verified', 'admin']);
 Route::get('/account/users', [AdminController::class, 'users'])->middleware(['auth', 'verified', 'admin']);
 Route::post('/account/delete_account', [AccountController::class, 'deleteAccount'])->middleware(['auth']);
 
@@ -88,3 +88,7 @@ Route::get('/success', [RazorpayPaymentController::class, 'success'])->name('suc
 //Route for viewing orders
 Route::get('/account/orders', [HomeController::class, "viewOrders"])->name("view-orders")->middleware(['auth']);
 
+//Route for promoting or demoting admin
+Route::post('/account/promote_admin', [AdminController::class, 'promoteAdmin'])->middleware(['auth', 'verified', 'admin']);
+
+Route::get('/update-product')

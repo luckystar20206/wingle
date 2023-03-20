@@ -19,7 +19,7 @@ class CheckUserSession
         if(session()->get('area')){
 
         }else{
-            return redirect('/');
+            return redirect('/#getting-started');
         }
         return $next($request);
     }
