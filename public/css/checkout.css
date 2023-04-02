@@ -179,3 +179,15 @@ body {
     font-size: 18px;
     font-weight: 500;
 }
+
+@media (max-width: 768px){
+    .container{
+        flex-direction: column;
+        width: 100%;
+        border-radius: 5px;
+    }
+
+    .container .details-cont .content{
+        width: 100%;
+    }
+}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\RequestAdmin;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -61,5 +62,11 @@ class AccountController extends Controller
         $user_id = auth()->user()->id;
         DB::table('users')->where(['id' => $user_id])->delete();
         return redirect('/login');
+    }
+
+    public function viewEditableProducts(){
+
+        $products = Product::all();
+        return view('updateProduct', ['products' => $products]);
     }
 }

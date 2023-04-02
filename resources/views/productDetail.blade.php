@@ -5,6 +5,24 @@
     <link rel="stylesheet" href="{{ asset('/css/productDetail.css') }}">
 @endsection
 
+@section('scriptjs')
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script>
+        // let form = document.getElementById('productAddFrm');
+        $('#productAddFrm').onsubmit(function (e){
+            e.preventDefault();
+            $.ajax({
+                url: {{ url('/add-to-cart') }},
+                type: 'post',
+                data: $('#productAddFrm').serialize(),
+                success: function (result){
+                    alert('product added');
+                }
+            })
+        })
+    </script>
+@endsection
+
 @section('title')
     {{ $productinfo[0]->p_name }}
 @endsection
@@ -43,7 +61,7 @@
                     </span>
                 </p>
             </div>
-            <form action="/add-to-cart" method="post">
+            <form action="/add-to-cart" method="post" id="productAddFrm">
                 @csrf
                 <div class="size-wrapper">
                     <label class="size-label">Size</label>

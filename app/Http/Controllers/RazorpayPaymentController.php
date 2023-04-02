@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\sendMailOnCheckout;
 use App\Models\Cart;
 use App\Models\Orders;
+use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
 use Doctrine\DBAL\Driver\PDO\Exception;
@@ -98,6 +99,9 @@ class RazorpayPaymentController extends Controller
             $order->save();
 
             Cart::where(['uid' => Auth::id()])->delete();
+            
+            // update a stock by minus 1 in products 
+            Product::where(['pid' => $item->pid])->decrement('stock');
 
             Mail::to($user->email)->send(new sendMailOnCheckout());
             return redirect('/cart')->with(['order-confirmed' => "Your order is placed."]);

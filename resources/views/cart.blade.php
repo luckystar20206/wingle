@@ -35,13 +35,12 @@
                             @csrf
                             <div class="quantity-wrapper">
                                 <label for="select-qty">Qty</label>
-                                <select name="qty" onclick="form.submit()" class="quantity-selection">
-                                    <option value="{{ $item->qty }}" selected>{{ $item->qty }}</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
+                                <select name="qty" onchange="form.submit()" class="quantity-selection">
+                                    <option value="1" {{ $item->qty == 1 ? 'selected' : '' }}>1</option>
+                                    <option value="2" {{ $item->qty == 2 ? 'selected' : '' }}>2</option>
+                                    <option value="3" {{ $item->qty == 3 ? 'selected' : '' }}>3</option>
+                                    <option value="4" {{ $item->qty == 4 ? 'selected' : '' }}>4</option>
+                                    <option value="5" {{ $item->qty == 5 ? 'selected' : '' }}>5</option>
                                 </select>
                             </div>
                             <input type="hidden" name="pid" value="{{ $item->pid }}">
@@ -52,13 +51,12 @@
                             @csrf
                             <div class="renting-period-wrapper">
                                 <label class="title">Number of days (rent period):</label>
-                                <select onclick="form.submit()" name="rent_period" class="renting-days-selection">
-                                    <option value="{{ $item->rent_period }}">{{ $item->rent_period }}</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
+                                <select onchange="form.submit()" name="rent_period" class="renting-days-selection">
+                                    <option value="1" {{ $item->rent_period == 1 ? 'selected' : '' }}>1</option>
+                                    <option value="2" {{ $item->rent_period == 2 ? 'selected' : '' }}>2</option>
+                                    <option value="3" {{ $item->rent_period == 3 ? 'selected' : '' }}>3</option>
+                                    <option value="4" {{ $item->rent_period == 4 ? 'selected' : '' }}>4</option>
+                                    <option value="5" {{ $item->rent_period == 5 ? 'selected' : '' }}>5</option>
                                 </select>
                                 <input type="hidden" name="pid" value="{{ $item->pid }}">
                                 <input type="hidden" name="qty" value="{{ $item->qty }}">

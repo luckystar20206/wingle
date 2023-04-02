@@ -37,7 +37,6 @@ class HomeController extends Controller
 
     public function contactEmail(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
@@ -51,10 +50,11 @@ class HomeController extends Controller
         }
 
         $data = [
-            'name' => $request->first_name . $request->last_name,
+            'name' => $request->first_name. " " . $request->last_name,
             'email' => $request->email,
             'message' => $request->message,
         ];
+
         Mail::to('archanrd29@gmail.com')->send(new ContactMail($data));
         return redirect()->to('/#contact')->with(['success' => 'Message sent successfully']);
     }

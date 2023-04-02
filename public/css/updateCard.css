@@ -22,11 +22,26 @@
     padding: 0 8px;
 }
 
-.card .card-details .card-title{
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 20px;
-    margin: 16px 0;
+.card .card-details form .label{
+    margin: 0;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.card .card-details form input{
+    padding: 8px 10px;
+    border-radius: 4px;
+    border: 1px solid lightgray;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    color: #000;
+    transition: background-color ease-in-out .2s;
+    background: transparent;
+}
+
+.card .card-details form input:focus{
+    border: 1px solid blue;
+    outline: none;
 }
 
 .card .card-details .pricing-cont{
@@ -101,3 +116,13 @@
     cursor: pointer;
 }
 
+.card .card-details .remove-button{
+    background-color: #ff4646;
+    color: white;
+    border: 1px solid #ff4646;
+    padding: 7px;
+    font-size: 17px;
+    font-family: 'Dm sans', sans-serif;
+    border-radius: 6px;
+    cursor: pointer;
+}

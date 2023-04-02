@@ -85,3 +85,13 @@ header .filter-cont .filter{
     font-family: 'Poppins', sans-serif;
     cursor: pointer;
 }
+@media (max-width: 576px){
+    .display-area form .dropdown-area .dropdown-input .show_area{
+        width: 130px;
+    }
+
+    header .heading{
+        line-height: 1.2;
+        color: #212121;
+    }
+}

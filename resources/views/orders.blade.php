@@ -64,7 +64,7 @@
                     @if(\auth()->user()->role === 'admin')
                         <li class="link-wrapper">
                             <i class="bi bi-bookmark-star-fill"></i>
-                            <a href="/account/list_admin_requests" class="link">Admin Requests</a>
+                            <a href="/account/" class="link">Account</a>
                         </li>
                         <li class="link-wrapper">
                             <i class="bi bi-people-fill"></i>
@@ -108,8 +108,8 @@
                         <td>{{ $order->order_id }}</td>
                         <td>{{ $order->payment_id }}</td>
                         <td>{{ str_replace(array( '[', ']', '"' ), '', $order->pname) }}</td>
-                        <td>{{ str_replace(array( '[', ']', '"' ), '', $order->category) }}</td>
                         <td>{{ str_replace(array( '[', ']', '"' ), '', $order->qty) }}</td>
+                        <td>{{ str_replace(array( '[', ']', '"' ), '', $order->category) }}</td>
                         <td>{{ $order->rent_period }} day</td>
                         <td>Rs {{ $order->cart_total }}</td>
                         <td>{{ $order->ordered_at }}</td>

@@ -509,4 +509,68 @@ body {
     padding: 8px 0;
     margin: 0;
 }
+.menu{
+    display: none;
+}
+@media (max-width: 576px){
+    .menu{
+        display: inline-block;
+        padding:  0 0 0  22px;
+    }
 
+    .account-page .sidebar{
+        border: none;
+        position: fixed;
+        left: -310px;
+        z-index: 99;
+        background-color: #fff;
+        transition: all ease 0.2s;
+    }
+
+    .account-page .sidebar.show{
+        left: 0;
+        touch-action: none;
+    }
+
+    .account-page .right header .title{
+        font-size: 25px;
+    }
+
+    .account-page .right .user-info-wrapper{
+        width: auto;
+        padding: 0 0 0 22px;
+    }
+
+    .account-page .right{
+        width: 100%;
+    }
+
+    .account-page .right .user-details-wrapper{
+        padding: 0;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .usr-details-form{
+        width: 100%;
+    }
+
+    .account-page .right .user-details-wrapper{
+        padding: 0 10px;
+    }
+
+    .account-page .right .user-details-wrapper .field-group{
+        width: 100%;
+        font-family: 'Dm sans', sans-serif;
+    }
+
+    .account-page .right .header-acc-details{
+        display: flex;
+        align-items: center;
+        margin: 0;
+    }
+
+    .account-page .right .admin-wrapper .card-container a .card .card-details .title{
+        font-size: 25px;
+    }
+}

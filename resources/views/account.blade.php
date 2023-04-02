@@ -7,6 +7,9 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('/css/account.css') }}">
 @endsection
+@section('js')
+    <script defer src="{{ asset('/js/account.js') }}"></script>
+@endsection
 @section('content')
     @if(session()->has('request_pending'))
         <div class="warning-alert">
@@ -39,6 +42,7 @@
         </div>
 
         {{-- Modal end --}}
+
         <div class="sidebar">
             <div class="wrapper-top-mid">
                 <div class="top">
@@ -79,7 +83,7 @@
                     </li>
                     <li class="link-wrapper">
                         <i class="bi bi-envelope-paper-fill"></i>
-                        <a href="/contact" class="link">Contact</a>
+                        <a href="/#contact" class="link">Contact</a>
                     </li>
                     <li class="link-wrapper">
                         <i class="bi bi-bag-fill"></i>
@@ -111,7 +115,11 @@
             </div>
         </div>
         <div class="right">
-            <header>
+
+            <header class="header-acc-details">
+                 <span class="menu material-symbols-outlined" id="menu">
+                menu
+            </span>
                 <h1 class="title">Account Details</h1>
             </header>
             <div class="user-info-wrapper">
@@ -147,7 +155,8 @@
                             <i class="bi bi-x-lg" onclick="document.querySelector('.btm').remove()"></i>
                         </div>
                     @endif
-                    <form action="/account/save-changes" method="post" style="display: flex; flex-wrap: wrap">
+                    <form action="/account/save-changes" method="post" class="usr-details-form"
+                          style="display: flex; flex-wrap: wrap">
                         @csrf
                         <div class="field-group">
                             <label for="name">Name</label>
@@ -211,7 +220,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a href="">
+                            <a href="/remove-product">
                                 <div class="card red">
                                     <div class="card-details">
                                         <h1 class="title">Remove Product</h1>
@@ -223,16 +232,8 @@
                     </div>
                 @else
                     <div class="admin-wrapper">
-                        <h1 style="margin: 0 0 20px 0">Member's Tools</h1>
+                        <h1 style="margin: 0 0 20px 0">Account actions</h1>
                         <div class="card-container">
-                            <a href="/account/request-admin-access">
-                                <div class="card green">
-                                    <div class="card-details">
-                                        <h1 class="title">Request Admin Access</h1>
-                                        <p class="desc">Get access to admin rights and manage wigle.</p>
-                                    </div>
-                                </div>
-                            </a>
                             <a href="#" onclick="document.getElementById('modal').classList.remove('none')">
                                 <div class="card red" id="delete-card">
                                     <div class="card-details">

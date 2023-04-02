@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Product;
+use GuzzleHttp\Handler\Proxy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -73,7 +74,7 @@ class ProductController extends Controller
 
         $products = Product::where(['pincode' => $pincode])->get();
 
-        return view("/products", ["products" => $products]);
+        return view("/products", ["products" => $products, 'filter' => 'all']);
     }
 
     public function productDetail($name, $id)
@@ -146,27 +147,37 @@ class ProductController extends Controller
     public function priceFilter(Request $request)
     {
         $filterName = $request->filter;
-        if($filterName === "ASC" || $filterName === "DESC"){
+        if ($filterName === "ASC" || $filterName === "DESC") {
             $products = Product::where(['pincode' => \session()->get('pincode')])->orderBy('p_price', $filterName)->get();
-    }elseif($filterName === "all"){
-
-        $products = Product::where(['pincode' => \session()->get('pincode')])->get();
-    
-    }else{
+        } elseif ($filterName === "all") {
+            $products = Product::where(['pincode' => \session()->get('pincode')])->get();
+        } else {
             $products = Product::where(['pincode' => \session()->get('pincode'), 'p_category' => $filterName])->get();
-    }
-        return view('products', ['products' => $products]);
+        }
+        return view('products', ['products' => $products, 'filter' => $filterName]);
     }
 
     public function listProducts()
     {
-        $products = DB::table('product')->select('*')->get();
+        $products = Product::all();
         return view('updateProduct', ['products' => $products]);
+    }
+
+    public function listRmProducts()
+    {
+        $products = Product::all();
+        return view('removeProduct', ['products' => $products]);
+    }
+
+    public function removeProduct(Request $request)
+    {
+        Product::where('pid', $request->pid)->delete(['p_name' => $request->product_name, 'p_price' => $request->product_price, 'stock' => $request->stock]);
+        return redirect()->back();
     }
 
     public function updateProduct(Request $request)
     {
-        $update = DB::table('product')->where('id', $request->pid)->update(['product_name' => $request->product_name, 'price' => $request->product_price]);
+        Product::where('pid', $request->pid)->update(['p_name' => $request->product_name, 'p_price' => $request->product_price, 'stock' => $request->stock]);
         return redirect()->back();
     }
 

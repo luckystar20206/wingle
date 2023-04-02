@@ -188,3 +188,34 @@
 .cart-table .total-container table tr .value.pt {
     padding-top: 10px;
 }
+
+@media (max-width: 576px) {
+    .cart-table .item-card{
+        padding: 0 10px;
+        height: auto;
+        flex-wrap: wrap;
+        margin: 0 0 5px 0;
+    }
+
+    .cart-table .item-card .col{
+        /*flex-direction: column;*/
+        width: 100%;
+    }
+
+    .cart-table .item-card .item-image{
+        width: 145px;
+        height: auto;
+    }
+
+    .cart-table .item-card .col .item-details .item-name{
+        font-size: 20px;
+    }
+
+    .total-container table tr .field{
+        width: auto;
+    }
+
+    .cart-table .total-container table tr .value, .cart-table .total-container table tr .field{
+        font-size: 18px;
+    }
+}

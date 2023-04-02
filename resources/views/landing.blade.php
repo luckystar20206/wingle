@@ -1,15 +1,9 @@
 @extends("components.layout")
-
 @section("css")
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('/css/landing.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('/css/landing.css') }}">
 @endsection
-
 @section("title")
-
     Home | Wigle
-
 @endsection
 
 @section('scriptjs')
@@ -20,8 +14,9 @@
 
         button.addEventListener('click', function () {
             buttontxt.innerHTML = "";
-            spinner.classList.remove('d-none');
+            spinner.classList.remove('d-none')
         });
+
     </script>
 @endsection
 
@@ -54,7 +49,7 @@
                                        placeholder="Example: 390010" / required>
                                 <button type="submit">View products</button>
                                 @if(session()->has('error_area'))
-                                    <p style="color: red; margin: 2px 0;">{{ session()->get('error_area') }}</p> 
+                                    <p style="color: red; margin: 2px 0;">{{ session()->get('error_area') }}</p>
                                 @endif
                             </form>
                         </div>
@@ -71,7 +66,7 @@
                 take up to 2 working days.</p>
             <p class="required-txt">* Indicates required field.</p>
             <div class="c-form-wrapper">
-                <form action="/send-mail" method="POST">
+                <form action="/send-mail" method="POST" id="contactfrm">
                     @csrf
                     <div class="form-group">
                         <input type="text" placeholder="First name*" name="first_name" class="form-control"/>

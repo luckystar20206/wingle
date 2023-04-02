@@ -9,7 +9,7 @@
         let urls = "{{ route('success') }}";
         let options = {
             "key": "{{env("RAZORPAY_API")}}", // Enter the Key ID generated from the Dashboard
-            "amount": "100", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "amount": "{{ $razorpayOrder['amount'] }}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
             "currency": "INR",
             "name": "Wigle Clothes", //your business name
             "description": "Thanks for choosing us",

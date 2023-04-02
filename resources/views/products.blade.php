@@ -8,12 +8,11 @@
 @endsection
 @section("css")
     <link rel="stylesheet" href="{{ asset("/css/product.css") }}">
-    <link href="/css/card.css" rel="stylesheet">
+    <link href="{{ asset('/css/card.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
     @include('nav')
-
     <header>
         <h1 class="heading">Order this from {{ session()->get('area') }}</h1>
         <div class="filter-cont">
@@ -36,13 +35,13 @@
             <div class="display-area">
                 <form action="/products/price-filter" method="GET">
                     <div class="dropdown-area">
-                        <select onclick="form.submit()" class="dropdown-input" name="filter" style="cursor: pointer">
-                            <option value="all" selected>All</option>
-                            <option value="ASC">Low to high</option>
-                            <option value="DESC">High to low</option>
-                            <option value="Mens">Mens</option>
-                            <option value="Womens">Womens</option>
-                            <option value="Kids">Kids</option>  
+                        <select onchange="form.submit()" class="dropdown-input" name="filter" style="cursor: pointer">
+                            <option value="all" {{ $filter == "all" ? 'selected' : '' }}>All</option>
+                            <option value="ASC" {{ $filter == "ASC" ? 'selected' : '' }}>Low to high</option>
+                            <option value="DESC" {{ $filter == "DESC" ? 'selected' : '' }}>High to low</option>
+                            <option value="Mens" {{ $filter == "Mens" ? 'selected' : '' }}>Mens</option>
+                            <option value="Womens" {{ $filter == "Womens" ? 'selected' : '' }}>Womens</option>
+                            <option value="Kids" {{ $filter == "Kids" ? 'selected' : '' }}>Kids</option>
                         </select>
                     </div>
                 </form>
@@ -53,7 +52,7 @@
         @foreach($products as $product)
             <a style="text-decoration: none; color: #181818"
                href="/products/product_name={{$product->p_name}}&id={{$product->pid}}">
-               
+
                 <x-card
                     image="{{ $product->p_image }}"
                     title="{{ $product->p_name }}"
