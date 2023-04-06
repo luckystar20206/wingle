@@ -78,10 +78,6 @@
                         <a href="/products" class="link">Products</a>
                     </li>
                     <li class="link-wrapper">
-                        <i class="bi bi-people-fill"></i>
-                        <a href="#" class="link">About</a>
-                    </li>
-                    <li class="link-wrapper">
                         <i class="bi bi-envelope-paper-fill"></i>
                         <a href="/#contact" class="link">Contact</a>
                     </li>
