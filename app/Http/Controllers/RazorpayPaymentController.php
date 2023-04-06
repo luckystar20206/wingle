@@ -99,13 +99,12 @@ class RazorpayPaymentController extends Controller
             $order->save();
 
             Cart::where(['uid' => Auth::id()])->delete();
-            
-            // update a stock by minus 1 in products 
-            Product::where(['pid' => $item->pid])->decrement('stock');
+
+            // update a stock by minus 1 in products of pincode 
+            Product::where(['pid' => $item->pid, 'pincode' => $cartItems[0]->pincode])->decrement('stock');
 
             Mail::to($user->email)->send(new sendMailOnCheckout());
             return redirect('/cart')->with(['order-confirmed' => "Your order is placed."]);
-
         }
         return redirect()->to("/cart")->with(['failed' => 'Payment failed']);
     }

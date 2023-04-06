@@ -90,6 +90,7 @@ Route::get('/account/orders', [HomeController::class, "viewOrders"])->name("view
 
 //Route for promoting or demoting admin
 Route::post('/account/promote_admin', [AdminController::class, 'promoteAdmin'])->middleware(['auth', 'verified', 'admin']);
+Route::post('/account/deleteuseraccount', [AdminController::class, 'deleteuseraccount'])->middleware(['auth', 'verified', 'admin']);
 
 //Route::get('/update-product', [ProductController::class, 'listProducts'])->middleware(['auth', 'verified', 'admin']);
 Route::get('/remove-product', [ProductController::class, 'listRmProducts'])->middleware(['auth', 'verified', 'admin']);

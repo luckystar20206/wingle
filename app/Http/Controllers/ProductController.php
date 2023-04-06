@@ -105,6 +105,7 @@ class ProductController extends Controller
             $cartItem->qty = $qty;
             $cartItem->rent_period = 1;
             $cartItem->item_total = $product->p_price * $qty;
+            $cartItem->pincode = $product->pincode;
             $cartItem->save();
 
             return redirect()->back()->with(['itemAdded' => "Item added to cart"]);
@@ -177,7 +178,7 @@ class ProductController extends Controller
 
     public function updateProduct(Request $request)
     {
-        Product::where('pid', $request->pid)->update(['p_name' => $request->product_name, 'p_price' => $request->product_price, 'stock' => $request->stock]);
+        Product::where(['pid' => $request->pid, 'pincode' => $request->product_area])->update(['p_name' => $request->product_name, 'p_price' => $request->product_price, 'stock' => $request->stock]);
         return redirect()->back();
     }
 

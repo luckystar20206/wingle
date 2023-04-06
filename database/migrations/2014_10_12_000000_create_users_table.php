@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('profile_photo')->default('0');
             $table->timestamp('created_at')->nullable();
             $table->string('password');
-            $table->bigInteger('phone')->unique();
+            $table->bigInteger('phone')->unique()->default('');
             $table->string('address')->nullable();
             $table->string('role')->default('member');
             $table->timestamp('updated_at')->nullable();

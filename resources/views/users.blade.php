@@ -79,6 +79,7 @@
                         <th scope="col">Address</th>
                         <th scope="col">Role</th>
                         <th scope="col">Permission</th>
+                        <th scope="col">Report</th>
                     </tr>
                 </thead>
                 @foreach ($users as $user)
@@ -96,11 +97,21 @@
                             <td>
                                 @if ($user->role == 'admin')
                                     <input type="hidden" value="{{ $user->id }}" name="uid">
-                                    <button class="btn btn-danger" type="submit" name="permission" value="remove-admin">Remove admin</button>
+                                    <button class="btn btn-danger" type="submit" name="permission"
+                                        value="remove-admin">Remove admin</button>
                                 @else
                                     <input type="hidden" value="{{ $user->id }}" name="uid">
-                                    <button class="btn btn-success" type="submit" name="permission" value="promote-admin">Promote admin</button>
+                                    <button class="btn btn-success" type="submit" name="permission"
+                                        value="promote-admin">Promote admin</button>
                                 @endif
+                            </td>
+                        </form>
+                        <form action="/account/deleteuseraccount" method="post">
+                            @csrf
+                            <td>
+                                <input type="hidden" value="{{ $user->id }}" name="uid">
+                                <button class="btn btn-warning" type="submit" name="deleteAccount"
+                                    value="delete-user">Remove user</button>
                             </td>
                         </form>
                     </tr>

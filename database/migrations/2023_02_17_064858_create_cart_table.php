@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('price');
             $table->string('size');
             $table->string('category');
+            $table->integer('pincode');
         });
     }
 

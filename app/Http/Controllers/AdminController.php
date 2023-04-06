@@ -59,4 +59,11 @@ class AdminController extends Controller
             return redirect()->back();
         }
     }
+
+    public function deleteuseraccount(Request $request)
+    {
+        $uid = $request->uid;
+        DB::table('users')->where('id', $uid)->delete();
+        return redirect()->back();
+    }
 }

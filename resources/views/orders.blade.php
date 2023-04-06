@@ -111,7 +111,7 @@
                         <td>{{ str_replace(array( '[', ']', '"' ), '', $order->qty) }}</td>
                         <td>{{ str_replace(array( '[', ']', '"' ), '', $order->category) }}</td>
                         <td>{{ $order->rent_period }} day</td>
-                        <td>Rs {{ $order->cart_total }}</td>
+                        <td>Rs {{ $order->cart_total/100 }}</td>
                         <td>{{ $order->ordered_at }}</td>
                     </tr>
                 @endforeach
