@@ -40,9 +40,10 @@ class HomeController extends Controller
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => ['required', 'max:255',],
+            'email' => ['required', 'max:255'],
             'message' => ['required']
         ]);
+
         if ($validator->fails()) {
             return redirect(url()->previous() .'#contact')
                 ->withErrors($validator)

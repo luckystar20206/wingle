@@ -94,4 +94,4 @@ Route::post('/account/deleteuseraccount', [AdminController::class, 'deleteuserac
 
 //Route::get('/update-product', [ProductController::class, 'listProducts'])->middleware(['auth', 'verified', 'admin']);
 Route::get('/remove-product', [ProductController::class, 'listRmProducts'])->middleware(['auth', 'verified', 'admin']);
-Route::post('/remove-product', [ProductController::class, 'removeProduct'])->middleware(['auth', 'verified', 'admin']);
+Route::post('/remove-product', [ProductController::class, 'removeProduct'])->middleware(['auth', 'verified', 'admin']); 
