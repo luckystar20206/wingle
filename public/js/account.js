@@ -4,4 +4,5 @@ menu.onclick = () => {
     let sidebar = document.querySelector('.sidebar');
     sidebar.classList.toggle('show');
     menu.style.zIndex = "100";
+    
 }
