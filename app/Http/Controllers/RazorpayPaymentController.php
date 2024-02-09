@@ -27,7 +27,7 @@ class RazorpayPaymentController extends Controller
 
     public function __construct()
     {
-        $this->api = new Api("rzp_test_xmkWmjAvPDr7gx", "cJBQ8JPQnwIutI5fEbK7NvK4");
+        $this->api = new Api("rzp_test_zPCSrYTIWuYtdC", "sAtuOBQuNFFuKCFa4XjvqLfi");
     }
 
     public function makeOrder(Request $request)
