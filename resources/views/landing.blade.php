@@ -1,6 +1,6 @@
 @extends("components.layout")
 @section("css")
-    <link rel="stylesheet" href="{{ asset('/css/landing.css') }}">
+    <link rel="stylesheet" href="/css/landing.css">
 @endsection
 @section("title")
     Home | Wigle
