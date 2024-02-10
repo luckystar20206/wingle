@@ -5,10 +5,10 @@
     Account | Wigle
 @endsection
 @section('css')
-    <link rel="stylesheet" href="{{ asset('/css/account.css') }}">
+    <link rel="stylesheet" href="/css/account.css">
 @endsection
 @section('js')
-    <script defer src="{{ asset('/js/account.js') }}"></script>
+    <script defer src="/js/account.js" type="text/javascript"></script>
 @endsection
 @section('content')
     @if(session()->has('request_pending'))
