@@ -8,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
-    <link rel="stylesheet" href="{{ asset('/css/nav.css') }}">
-    <script defer src="{{ asset('/js/nav.js') }}" type="text/javascript"></script>
+        <link rel="stylesheet" href="/css/nav.css">
+    <script defer src="/js/nav.js" type="text/javascript"></script>
 </head>
 
 <body>
