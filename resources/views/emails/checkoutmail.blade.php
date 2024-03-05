@@ -2,5 +2,6 @@
 
 @section('content')
     <h1>Your order is placed.</h1>
-    <p>Check your orders <a href="http://archan.live/account/orders">here.</a></p>
+    <p>To check the order, visit the "Orders" page on the website</p>
+    <p><i>Account</i> -> <i>Orders</i></p>
 @endsection
